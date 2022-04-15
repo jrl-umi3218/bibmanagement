@@ -1,0 +1,6 @@
+bibtexparser >= 1
+PyQT5 >= 5
+ply >= 3
+openpyxl
+python-docx
+pyyaml
