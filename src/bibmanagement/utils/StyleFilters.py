@@ -1,4 +1,4 @@
-import utils.FormattedString as fs
+from bibmanagement.utils import FormattedString as fs
 import copy
 
 class Filter:
