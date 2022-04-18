@@ -1,5 +1,5 @@
-import FormatExpr.CondParserGenerator as CondParserGenerator
-import FormatExpr.ParserGenerator as ParserGenerator
+from bibmanagement.FormatExpr import CondParserGenerator
+from bibmanagement.FormatExpr import ParserGenerator
 
 class Parser:
     def __init__(self):
@@ -20,22 +20,3 @@ class Parser:
         e = p.eval(env)
 
         return e
-
-if __name__ == "__main__":
-    class DummyField:
-        def __init__(self, val):
-            self.val = val
-
-        def format(self, fmt):
-            return self.val
-
-    class Env: pass
-
-    env = Env()
-    env.data = {'ph' : DummyField('a'), 'qh' : DummyField(''), 'rh' : DummyField('c')}
-    env.defaultFormat = {}
-    env.defaultStyle = {}
-
-    p = Parser()
-    r = p.run(r"%ph%<?, {-}<?%ph%>?>%qh%<?, ?>%qh%<~@?>%rh%", env)
-    print(r)

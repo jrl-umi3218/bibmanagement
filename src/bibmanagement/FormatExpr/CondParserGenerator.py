@@ -1,5 +1,6 @@
 import ply.lex as lex
 import ply.yacc as yacc
+import types
 
 # List of token names.
 tokens = ('CONSTANT',
@@ -368,8 +369,6 @@ def p_lnegrcomp(p):
 def p_error(p):
     pass
 
-import types
-
 def get():
     lexer = lex.lex()
     # patching the lexer:
@@ -384,31 +383,4 @@ def get():
     lexer.input = types.MethodType(newInput, lexer)
     parser = yacc.yacc(tabmodule='FormatParserTab')
     return lexer, parser
-
-def example():
-    lexer = lex.lex()
-    lexer.maxDepth = 0
-    lexer.input(r"a<begin?>%ph%")
-    #lexer.input(r"[azerty]")
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print(tok)
-
-    parser = yacc.yacc(tabmodule='CondParserTab')
-
-    result = parser.parse(r"<begin?>%ph%")
-    print(result.unparse())
-    print('----------------------------\n')
-
-    result = parser.parse(r"a<?-?>b")
-    print(result.unparse())
-    print('----------------------------\n')
-
-    result = parser.parse(r"a<?-?>b<?-?>c")
-    print(result.unparse())
-    print('----------------------------\n')
-
-if __name__ == "__main__":
-    example()
+    
