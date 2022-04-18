@@ -1,6 +1,6 @@
-from Fields.Field import Field
-from Fields.Name import Name
-from utils.FormattedString import Single
+from bibmanagement.Fields.Field import Field
+from bibmanagement.Fields.Name import Name
+from bibmanagement.utils.FormattedString import Single
 
 class Authors(Field):
     """All the authors of an entry"""

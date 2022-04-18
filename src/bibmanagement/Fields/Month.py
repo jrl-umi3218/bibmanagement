@@ -1,6 +1,6 @@
-from Fields.Field import Field
-from Fields.Date import Date
-from utils.FormattedString import Single
+from bibmanagement.Fields.Field import Field
+from bibmanagement.Fields.Date import Date
+from bibmanagement.utils.FormattedString import Single
 
 class Month(Field):
     """The month of publication (or, if unpublished, the month of creation)"""

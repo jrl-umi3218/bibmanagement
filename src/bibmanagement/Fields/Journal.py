@@ -1,5 +1,5 @@
-from Fields.StringField import StringField
-from utils.FormattedString import Single
+from bibmanagement.Fields.StringField import StringField
+from bibmanagement.utils.FormattedString import Single
 import json
 import sys
 

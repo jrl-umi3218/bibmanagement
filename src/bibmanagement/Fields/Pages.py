@@ -1,6 +1,6 @@
-from Fields.Field import Field
-from Fields import FormatExpr
-from utils.FormattedString import Single
+from bibmanagement.Fields.Field import Field
+from bibmanagement.Fields import FormatExpr
+from bibmanagement.utils.FormattedString import Single
 
 class Pages(Field):
 
@@ -98,14 +98,3 @@ class Pages(Field):
                     replacements.append('')
 
         return Single('pages', f.reduce(replacements), style)
-
-
-def test01():
-    p1 = Pages.fromString('10--15')
-    p2 = Pages(3)
-
-    assert(p1.format('%page% %f%[--]%l%') == 'pages 10--15')
-    assert(p2.format('%page% %f%[--]%l%') == 'page 3')
-    assert(p1.format('%p% %f%[ - ]%l%') == 'pp. 10 - 15')
-    assert(p2.format('%p% %f%[-]%l%') == 'p. 3')
-

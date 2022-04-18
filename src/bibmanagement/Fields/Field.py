@@ -1,4 +1,4 @@
-from utils.FormattedString import Style
+from bibmanagement.utils.FormattedString import Style
 
 class Field:
     """Base abstract class for all fields"""
