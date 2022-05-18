@@ -88,21 +88,3 @@ class Authors(Field):
                     return [str[1:i]]
 
         raise ValueError("unbalanced braces")
-
-
-def test01():
-    s = "Herzog, Alexander and Rotella, Nicholas and Mason, Sean and Grimminger, Felix and Schaal, Stefan and Righetti, Ludovic"
-    a = Authors.fromString(s)
-
-    def checkEq(a,b):
-        if a != b:
-            print("[Authors] Test error: " + a + " should be equal to " + b)
-
-    checkEq(a.format('{%F% %Last%}{, }{ and }{}'), 'A. Herzog, N. Rotella, S. Mason, F. Grimminger, S. Schaal and L. Righetti')
-    checkEq(a.format('{%F% %Last%}{, }{ and }{2}'), 'A. Herzog, N. Rotella et al.')
-    checkEq(a.format('{%F% %Last%}{, }{ and }{5}'), 'A. Herzog, N. Rotella, S. Mason, F. Grimminger, S. Schaal and L. Righetti')
-    checkEq(a.format('{%F% %Last%}{, }{ and }{5!}'), 'A. Herzog, N. Rotella, S. Mason, F. Grimminger, S. Schaal et al.')
-
-
-if __name__ == "__main__":
-    test01()

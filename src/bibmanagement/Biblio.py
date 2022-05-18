@@ -1,14 +1,14 @@
-from Entry import Entry
-from Entry import Proceedings
+from bibmanagement.Entry import Entry
+from bibmanagement.Entry import Proceedings
+from bibmanagement.bibParser import openBib
+from bibmanagement.FormatExpr import Formatter
+from bibmanagement.utils import FormattedString
+from bibmanagement.utils import Sort as us
 from openpyxl import Workbook
-from bibParser import openBib
 from openpyxl import utils
 from openpyxl.styles import Font
 from docx import Document
 from docx.shared import Pt
-import FormatExpr.Formatter as Formatter
-import utils.FormattedString as FormattedString
-import utils.Sort as us
 import copy
 
 class Biblio:
@@ -97,7 +97,23 @@ class Biblio:
         self.entries.sort(key = lambda e: us.MixCompKey(tuple(str(f.run(e)) for f in ff), cmp))
 
 
-    def toExcel(self, startRow, format):
+    def toExcel(self, format, startRow=1, out='demo'):
+        '''
+        Output the biblio to an excel file according to a given format
+        
+        One entry of the biblio will appear on each row, and columns of this
+        row will depend on the specified format.
+        
+        Parameters
+        ----------
+        format : dict
+            A dictionary where each key is the letter(s) of a column, and each
+            item is a formatting string specifying the content of that column.
+        startRow : int
+            Number of the first row in which an entry is written.
+        out : str
+            The path of the output file, without the extension.
+        '''
         wb = Workbook()
         # grab the active worksheet
         ws = wb.active
@@ -113,7 +129,7 @@ class Biblio:
                     cell.font = Font(name=s.font, size=s.fontSize, bold=s.bold, italic=s.italic, underline=u, strikethrough=s.strikethrough)
 
         # Save the file
-        wb.save("sample.xlsx")
+        wb.save(out + '.xlsx')
 
     def toWord(self, format, styleFilters=[], out='demo'):
         document = Document()

@@ -1,14 +1,14 @@
-from bibParser import *
-from Entry import *
-import Fields.Date
-import Fields.FormatExpr
-import Fields.StringField
-import Fields.Authors
-import Fields.Pages
-import Fields.Journal
-import FormatExpr.Parser as Parser
-import Biblio
-import utils.StyleFilters as sf
+from bibmanagement.bibParser import *
+from bibmanagement.Entry import *
+from bibmanagement.Fields import Date
+from bibmanagement.Fields import FormatExpr
+from bibmanagement.Fields import StringField
+from bibmanagement.Fields import Authors
+from bibmanagement.Fields import Pages
+from bibmanagement.Fields import Journal
+from bibmanagement.FormatExpr import Parser
+from bibmanagement import Biblio
+from bibmanagement.utils import StyleFilters as sf
 
 def test():
     db = openBib('tests/data/AE.bib')
@@ -29,7 +29,7 @@ def test():
 
 def testExcel():
     bib = Biblio.Biblio.fromBibFile('tests/data/AE.bib')
-    bib.toExcel(3,{'B':'[{%F%. %Last%}{, }{ and }{2}]%author%', 'C':'[i][]%title%', 'D':'[u][]%booktitle%|[b][]%journal%', 'E': '%year%'})
+    bib.toExcel({'B':'[{%F%. %Last%}{, }{ and }{2}]%author%', 'C':'[i][]%title%', 'D':'[u][]%booktitle%|[b][]%journal%', 'E': '%year%'}, 3)
     
 def testWord():
     bib = Biblio.Biblio.fromBibFile('tests/data/AE.bib')
@@ -70,16 +70,6 @@ def testDot():
     print(e.format("%month._date%?range|no range"))
 
 def main():
-
-    #Fields.Date.test01()
-    #Fields.Date.test02()
-    #Fields.FormatExpr.test01()
-    #Fields.Authors.test01()
-    #Fields.Pages.test01()
-
-    #d = Fields.Date.Date('Jan 31 - Feb 2')
-    #print(d.format('%Month% %day1%[-]%day2%'))
-
     #test()
     #testExcel()
     #testWord()

@@ -78,7 +78,7 @@ class Single:
     '''
     A string, with a single style and a type.
     The type is used to specify what kind of value the string represents and can be leveraged in filtering.
-    The style specify how the string should be displyed upon export (however exporter may ignore the style.
+    The style specify how the string should be displayed upon export (however exporter may ignore the style).
 
     A Single is considered empty if its type is 'none' and its string is empty
     '''

@@ -18,13 +18,14 @@ class Field:
         if len(s) == 1: # there was no open parenthesis: this should be a field
             return getattr(self,cmd,'')
         else:
-            if s[1][-1] == ')':
+            if s[1] and s[1][-1] == ')':
                 f = getattr(self,s[0],None)
                 if callable(f):
-                    if len(s[1]==0):
+                    if len(s[1])==1:
                         return f()
                     else:
-                        return f(s[0:-1])
+                        arg = [a.strip() for a in s[1][0:-1].split(',')]
+                        return f(*arg)
                 else:
                     raise ValueError(s[0] + ' is not a method for this field.')
             else:

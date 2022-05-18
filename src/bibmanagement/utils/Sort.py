@@ -11,9 +11,9 @@ class MixComp:
          - comp((1,2,3), (0,2,3)) returns True  (1 is greater than 0)
          - comp((1,2,3), (1,3,3)) returns True  (1 equals 1 and 2 is lower than 3)
          - comp((1,2,3), (1,1,3)) returns False (1 equals 1 and 2 is not lower than 1) 
-         - comp((1,2,3), (1,2,4)) returns False (1 equals 1, 2 equals 2 and 3 is not greater than 4)
-         - comp((1,2,3), (1,2,2)) returns True  (1 equals 1, 2 equals 2 and 3 is greater than 2)
-         - comp((1,2,3), (1,2,3)) returns False (1 equals 1, 2 equals 2 and 3 is not greater than 3)
+         - comp((1,2,3), (1,2,4)) returns True (1 equals 1, 2 equals 2 and 3 is lower than 4)
+         - comp((1,2,3), (1,2,2)) returns True  (1 equals 1, 2 equals 2 and 3 is not lower than 2)
+         - comp((1,2,3), (1,2,3)) returns False (1 equals 1, 2 equals 2 and 3 is not lower than 3)
         '''
         self._order = []
         for o in order:

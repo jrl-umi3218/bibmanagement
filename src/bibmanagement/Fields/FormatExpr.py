@@ -4,7 +4,7 @@ from enum import IntEnum
 
 def unusedChar(string, forbidden=[], n=1):
     '''
-    Return n charachter neither in string nor in forbidden.
+    Return n characters neither in string nor in forbidden.
     No special character from regular expression can be returned.
     '''
     assert(n>0)
@@ -17,7 +17,7 @@ def unusedChar(string, forbidden=[], n=1):
                 l.append(c)
                 if len(l) == n:
                     return l
-    raise ValueError('Cannot find ' + arg_str(n) + ' unused characters')
+    raise ValueError('Cannot find ' + str(n) + ' unused characters')
 
 
 class FormatExpr:
@@ -109,7 +109,7 @@ class FormatExpr:
                 
 
     def _parse(self, formatExpr):
-        # We find an unused char to be used as empty char
+        # We find unused chars to be used as empty char and escape char
         unused = unusedChar(formatExpr, '[]%', 2)
         self._emptyChar = unused[0]
         self._escapeChar = unused[1]
@@ -196,40 +196,4 @@ class FormatExpr:
         else:
             l = []
         return l
-
-
-
-def test01():
-    ph = ['field1', 'field2', 'field3', 'field4', 'field5']
-
-    def test(expr,replacements,expected):
-        format = FormatExpr(ph, expr)
-        s = format.reduce(replacements)
-        assert(s == expected)
-
-    test('%field1% + %field2% = %field3%', ['1','2','3'], '1 + 2 = 3')
-    test('%field2%[/]%field3%', ['1','2'], '1/2')
-    test('%field2%[/]%field3%', ['1','#'], '1')
-    test('%field2%[/]%field3%', ['#','2'], '2')
-
-    test('%field1%[, %field2%][, ]%field3%', ['1', '2', '3'], '1, 2, 3')
-    test('%field1%[, %field2%][, ]%field3%', ['1', '2', '#'], '1, 2')
-    test('%field1%[, %field2%][, ]%field3%', ['1', '#', '3'], '1, 3')
-    test('%field1%[, %field2%][, ]%field3%', ['#', '2', '3'], ', 2, 3')
-    test('%field1%[, %field2%][, ]%field3%', ['1', '#', '#'], '1')
-    test('%field1%[, %field2%][, ]%field3%', ['#', '2', '#'], ', 2')
-    test('%field1%[, %field2%][, ]%field3%', ['#', '#', '3'], '3')
-    test('%field1%[, %field2%][, ]%field3%', ['#', '#', '#'], '')
-
-    test('%field1%[, ]%field2%[, ]%field3%', ['1', '2', '3'], '1, 2, 3')
-    test('%field1%[, ]%field2%[, ]%field3%', ['1', '2', '#'], '1, 2')
-    test('%field1%[, ]%field2%[, ]%field3%', ['1', '#', '3'], '1, 3')
-    test('%field1%[, ]%field2%[, ]%field3%', ['#', '2', '3'], '2, 3')
-    test('%field1%[, ]%field2%[, ]%field3%', ['1', '#', '#'], '1')
-    test('%field1%[, ]%field2%[, ]%field3%', ['#', '2', '#'], '2')
-    test('%field1%[, ]%field2%[, ]%field3%', ['#', '#', '3'], '3')
-    test('%field1%[, ]%field2%[, ]%field3%', ['#', '#', '#'], '')
-
-    test(r'[\[%field1%\]]', ['1'], '[1]')
-    test(r'\%%field1%', ['1'], '%1')
     

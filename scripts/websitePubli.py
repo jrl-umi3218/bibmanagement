@@ -1,9 +1,9 @@
-from bibParser import *
-from Entry import *
-import Biblio
-import utils.BibFilter
-import Fields.Journal
-import Fields.Booktitle
+from bibmanagement.bibParser import *
+from bibmanagement.Entry import *
+from bibmanagement import Biblio
+from bibmanagement.utils import BibFilter
+from bibmanagement.Fields import Journal
+from bibmanagement.Fields import Booktitle
 import yaml
 import os
 

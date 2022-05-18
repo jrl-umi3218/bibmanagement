@@ -85,14 +85,14 @@ class EQ(Comparator):
         return x == self._val
         
 class NE(Comparator):
-    '''Test if the input is differnet from a given value'''
+    '''Test if the input is different from a given value'''
     
     def __init__(self, val, any=True):
         self._initVal(val)
         super().__init__(any)
     
     def _run(self, x):
-        return x == self._val
+        return x != self._val
         
 class GE(Comparator):
     '''Test if the input is greater than or equal to a given value'''

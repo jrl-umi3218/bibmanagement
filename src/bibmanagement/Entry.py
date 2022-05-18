@@ -1,12 +1,12 @@
-from Fields.Authors import *
-from Fields.BasicFields import *
-from Fields.NonStandardFields import *
-from Fields.Month import *
-from Fields.Pages import *
-from Fields.Journal import Journal
-from Fields.Booktitle import Booktitle
-from utils.FormattedString import Single
-import FormatExpr.Formatter as Formatter
+from bibmanagement.Fields.Authors import *
+from bibmanagement.Fields.BasicFields import *
+from bibmanagement.Fields.NonStandardFields import *
+from bibmanagement.Fields.Month import *
+from bibmanagement.Fields.Pages import *
+from bibmanagement.Fields.Journal import Journal
+from bibmanagement.Fields.Booktitle import Booktitle
+from bibmanagement.utils.FormattedString import Single
+from bibmanagement.FormatExpr import Formatter
 from bibtexparser.latexenc import string_to_latex
 import sys
 
