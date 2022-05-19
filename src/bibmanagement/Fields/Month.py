@@ -14,7 +14,7 @@ class Month(Field):
         self._date = date
 
     @classmethod
-    def fromString(cls, str):
+    def _fromString(cls, str):
         date = Date(str)
         return cls(date)
         

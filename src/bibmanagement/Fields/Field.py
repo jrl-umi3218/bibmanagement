@@ -38,7 +38,13 @@ class Field:
         raise NotImplementedError()
 
     @classmethod
-    def fromString(cls, str):
+    def fromString(cls, str, e = None):
+        f = cls._fromString(str)
+        f.entry = e
+        return f
+        
+    @classmethod
+    def _fromString(cls, str):
         raise NotImplementedError()
 
 

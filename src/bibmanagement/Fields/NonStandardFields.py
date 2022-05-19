@@ -17,7 +17,7 @@ class Hal_id(StringField):
 class Hal_version(NumericField):
     """"Version on HAL"""
     @classmethod
-    def fromString(cls, str):
+    def _fromString(cls, str):
         assert(str[0]=='v')
         return cls(int(str[1:]))
 

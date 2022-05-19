@@ -82,7 +82,7 @@ class NumericField(Field):
         self._val = val
 
     @classmethod
-    def fromString(cls, s):
+    def _fromString(cls, s):
         try:
             v = int(s)
         except:

@@ -24,7 +24,7 @@ class StringField(Field):
         self._val = str
 
     @classmethod
-    def fromString(cls, str):
+    def _fromString(cls, str):
         return cls(str)
 
     def _format(self, formatExpr, style):

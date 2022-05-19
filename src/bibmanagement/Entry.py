@@ -71,7 +71,7 @@ class BaseEntry:
                 t = tag.lower()
                 self._raw[t] = val
                 if t in BaseEntry.__fieldMap:
-                    setattr(self, t, eval(BaseEntry.__fieldMap[t]).fromString(val))
+                    setattr(self, t, eval(BaseEntry.__fieldMap[t]).fromString(val, self))
                     self._fields[t] = getattr(self, t)
                 else:
                     print("Unrecognized field name " + tag + " in entry " + self._raw['ID'], file=sys.stderr)
@@ -119,7 +119,7 @@ class BaseEntry:
         """
         if key in BaseEntry.__fieldMap:
             if isinstance(value, str):
-                setattr(self, key, eval(BaseEntry.__fieldMap[key]).fromString(value))
+                setattr(self, key, eval(BaseEntry.__fieldMap[key]).fromString(value, self))
                 self._raw[key] = value
             else:
                 if isinstance(value, eval(BaseEntry.__fieldMap[key])):

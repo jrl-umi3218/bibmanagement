@@ -18,7 +18,7 @@ class Pages(Field):
             self._last = None
 
     @classmethod
-    def fromString(cls, str):
+    def _fromString(cls, str):
         if ',' in str:
             raise NotImplementedError()
         try:

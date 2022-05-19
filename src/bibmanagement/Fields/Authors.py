@@ -12,7 +12,7 @@ class Authors(Field):
         self._authors = authors
 
     @classmethod
-    def fromString(cls, str):
+    def _fromString(cls, str):
         authors = [Name(n.strip()) for n in str.split(' and ')]
         return cls(authors)
         
