@@ -12,8 +12,8 @@ class Authors(Field):
         self._authors = authors
 
     @classmethod
-    def _fromString(cls, str):
-        authors = [Name(n.strip()) for n in str.split(' and ')]
+    def _fromString(cls, str, e):
+        authors = [Name(n.strip(), e) for n in str.split(' and ')]
         return cls(authors)
         
     def __getitem__(self, item):

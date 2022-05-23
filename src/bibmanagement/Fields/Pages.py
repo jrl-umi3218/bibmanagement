@@ -1,6 +1,9 @@
 from bibmanagement.Fields.Field import Field
 from bibmanagement.Fields import FormatExpr
 from bibmanagement.utils.FormattedString import Single
+from bibmanagement.log import logging
+
+logger = logging.getBibLogger(__name__)
 
 class Pages(Field):
 
@@ -18,18 +21,18 @@ class Pages(Field):
             self._last = None
 
     @classmethod
-    def _fromString(cls, str):
+    def _fromString(cls, str, e):
         if ',' in str:
             raise NotImplementedError()
         try:
             pages = [int(p) for p in str.split('-') if len(p.strip()) > 0]
         except:
-            print("Unexpected page format: {0}".format(str))
+            logger.warning(e, 'unexpected_page_format', str)
             return cls(str)
         n = len(pages)
         if n > 2:
             #raise ValueError("Too many page numbers.")
-            print("Unexpected page format: {0}".format(str))
+            logger.warning(e, 'unexpected_page_format', str)
             return cls(str)
         if n < 1:
             raise ValueError("No page number found")

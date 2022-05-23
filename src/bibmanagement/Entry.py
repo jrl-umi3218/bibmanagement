@@ -8,7 +8,10 @@ from bibmanagement.Fields.Booktitle import Booktitle
 from bibmanagement.utils.FormattedString import Single
 from bibmanagement.FormatExpr import Formatter
 from bibtexparser.latexenc import string_to_latex
+from bibmanagement.log import logging
 import sys
+
+logger = logging.getBibLogger(__name__)
 
 class BaseEntry:
     _formatter = Formatter.Formatter()
@@ -74,7 +77,8 @@ class BaseEntry:
                     setattr(self, t, eval(BaseEntry.__fieldMap[t]).fromString(val, self))
                     self._fields[t] = getattr(self, t)
                 else:
-                    print("Unrecognized field name " + tag + " in entry " + self._raw['ID'], file=sys.stderr)
+                    logger.warning(self, 'unrecognized_field_name', tag)
+                    #print("Unrecognized field name " + tag + " in entry " + self._raw['ID'], file=sys.stderr)
 
     def __iter__(self):
         return iter(self._fields)
@@ -129,7 +133,8 @@ class BaseEntry:
                     raise TypeError('Attempt to assign an incorrect type')
             self._fields[key] = getattr(self, key)
         else:
-            print("Unrecognized field name " + key + " in entry " + self.id, file=sys.stderr)
+            logger.warning(self, 'unrecognized_field_name', tag)
+            #print("Unrecognized field name " + key + " in entry " + self.id, file=sys.stderr)
 
     def get(self, key, default=None):
         """
@@ -348,5 +353,5 @@ class Entry:
             else:
                 raise KeyError('Unknown entry type: ' + data['ENTRYTYPE'])
         else:
-            print(data)
+            logging.error('Missing ENTRYTYPE field in\n%s', data)
             raise KeyError('Missing ENTRYTYPE field')

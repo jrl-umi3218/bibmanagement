@@ -1,5 +1,9 @@
 from bibmanagement.Fields.Field import Field
 from bibmanagement.utils.FormattedString import Single
+from bibmanagement.log import logging
+
+logger = logging.getBibLogger(__name__)
+
 import warnings
 
 class NumericField(Field):
@@ -7,15 +11,15 @@ class NumericField(Field):
     _defaultFormatExpr = '%num%'
 
     @staticmethod
-    def _makeOrdinal(n):
+    def _makeOrdinal(n, e=None):
         """ Return a string representing the ordinal number corresponding to n"""
         
         if isinstance(n, str):
-            warnings.warn("Numeric field {0} is a string".format(n))
+            logger.warning(e, 'numeric_value_expected', n)
             return n
 
         if not isinstance(n, int):
-            warnings.warn('Non-integer number passed to _makeOrdinal')
+            logger.warning(e, 'non_integer', str(n), '_makeOrdinal')
 
         l = n%10
         ll = n%100
@@ -28,14 +32,14 @@ class NumericField(Field):
         return str(n)+'th'
 
     @staticmethod
-    def _makeAlphaOrdinal(n):
+    def _makeAlphaOrdinal(n, e=None):
         """Return a string representing the ordinal number written with alphabetical characters"""
         if isinstance(n, str):
-            warnings.warn("Numeric field {0} is a string".format(n))
+            logger.warning(e, 'numeric_value_expected', n)
             return n
         
         if not isinstance(n, int):
-            warnings.warn('Non-integer number passed to _makeOrdinal')
+            logger.warning(e, 'non_integer', str(n), '_makeAlphaOrdinal')
 
         if n < 1:
             raise ValueError("n needs to be at least one")
@@ -82,11 +86,11 @@ class NumericField(Field):
         self._val = val
 
     @classmethod
-    def _fromString(cls, s):
+    def _fromString(cls, s, e):
         try:
             v = int(s)
         except:
-            print("Expected single numeric value, got {0} instead".format(s))
+            logger.warning(e, 'numeric_value_expected', s)
             v = s
         return cls(v)
 
@@ -96,7 +100,7 @@ class NumericField(Field):
             raise ValueError('Format expr must include exactly one placeholder (enclosed by %)')
 
         s = formatExpr.replace('%num%', str(self._val))\
-                      .replace('%ord%', NumericField._makeOrdinal(self._val))\
-                      .replace('%th%', NumericField._makeOrdinal(self._val))
+                      .replace('%ord%', NumericField._makeOrdinal(self._val, self.entry))\
+                      .replace('%th%', NumericField._makeOrdinal(self._val, self.entry))
 
         return Single(self.__class__.__name__.lower(), s, style)

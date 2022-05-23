@@ -1,11 +1,15 @@
+from bibmanagement.log import logging
+
+logger = logging.getBibLogger(__name__)
+
 class Name:
-    def __init__(self, str):
+    def __init__(self, str, entry=None):
         if len(str.strip()) == 0:
             raise ValueError('Name cannot be an empty string')
         self._firstName = None
         self._middleName = None
         self._lastName = None
-        self._parse(str)
+        self._parse(str, entry)
 
     @staticmethod
     def _correctCase(str):
@@ -41,7 +45,7 @@ class Name:
                 name = n[0]
                 return name[0] + '.'
 
-    def _parse(self, str):
+    def _parse(self, str, entry=None):
         # Simple parsing, we do not handle 'von' or 'Jr'
         # See https://nwalsh.com/tex/texhelp/bibtx-23.html for how complex it should be
         #
@@ -78,7 +82,7 @@ class Name:
                 sep = ' '
                 self._middleName = Name._correctCase(sep.join([n.strip().rstrip() for n in s[2:]]))
                 if len(s)>3:
-                    print("Warning, name with more than 3 components: {0}".format(str))
+                    logger.warning(entry, 'more_than_3_names', str)
                 #raise ValueError('Name with more than 1 coma (if this is because of a Jr, we do not handle this case for now).')
 
     @property

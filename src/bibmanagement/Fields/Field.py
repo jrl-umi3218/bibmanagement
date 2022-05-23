@@ -39,12 +39,12 @@ class Field:
 
     @classmethod
     def fromString(cls, str, e = None):
-        f = cls._fromString(str)
+        f = cls._fromString(str, e)
         f.entry = e
         return f
         
     @classmethod
-    def _fromString(cls, str):
+    def _fromString(cls, str, e = None):
         raise NotImplementedError()
 
 

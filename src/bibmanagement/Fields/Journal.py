@@ -1,7 +1,10 @@
 from bibmanagement.Fields.StringField import StringField
 from bibmanagement.utils.FormattedString import Single
+from bibmanagement.log import logging
 import json
 import sys
+
+logger = logging.getBibLogger(__name__)
 
 class PublicationVector(StringField):
     # list of vectors of publication (i.e. journal, proceeddings,...)
@@ -22,7 +25,7 @@ class PublicationVector(StringField):
                 name = d.get('name')
                 if name:
                     if name in PublicationVector._vectorList:
-                        print("Publication vector {0} is already present in the list. Its data will be overwritten.".format(name))
+                        logger.info(None, 'pub_already_present', name)
                     PublicationVector._vectorList[name] = d
                 else:
                     raise ValueError('No name field in item ' + str(d))
@@ -63,10 +66,10 @@ class PublicationVector(StringField):
             if n:
                 return n
             else:
-                print('Cannot find ' + nameType + ' in data for ' + vectorName + ', using default name instead.', file=sys.stderr)
+                logger.warning(None, 'not_in_data', nameType, vectorName)
                 return vectorName
         else:
-            print('Cannot find ' + vectorName + ' in vector list, using default name instead.', file=sys.stderr)
+            logger.warning(None, 'not_in_vector', vectorName)
             return vectorName
 
 
@@ -102,14 +105,14 @@ class PublicationVector(StringField):
                 if errorIfMissing:
                     raise ErrorValue(msg)
                 else:
-                    print (msg)
+                    logger.warning(None, 'generic', msg)
                     return default
         else:
             msg = "Cannot find {0} in vector list. Cannot determine the value of {1}.".format(self._val, prop)
             if errorIfMissing:
                 raise ValueError(msg)
             else:
-                print(msg)
+                logger.warning(None, 'generic', msg)
                 return default
             
 

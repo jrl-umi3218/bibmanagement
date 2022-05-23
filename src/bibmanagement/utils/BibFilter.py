@@ -1,3 +1,7 @@
+from bibmanagement.log import logging
+
+logger = logging.getBibLogger(__name__)
+
 class Comparator:
     '''
     Base class for filter comparator
@@ -211,7 +215,7 @@ class Selector:
         try:
             return self._run(x)
         except BaseException as err:
-            print("dismiss {0} because {1}".format(x.id, err))
+            logger.warning(x, 'dismiss', x.id, err)
             return False
             
     def _run(self, x):
