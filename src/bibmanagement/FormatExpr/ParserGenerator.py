@@ -211,5 +211,5 @@ def p_error(p):
 
 def get():
     lexer = lex.lex()
-    parser = yacc.yacc(tabmodule='FormatParserTab')
+    parser = yacc.yacc(tabmodule='FormatParserTab', debug=False)
     return lexer, parser

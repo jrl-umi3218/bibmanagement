@@ -381,6 +381,6 @@ def get():
     lexer.maxDepth = 0;
     lexer.input_ = lexer.input
     lexer.input = types.MethodType(newInput, lexer)
-    parser = yacc.yacc(tabmodule='FormatParserTab')
+    parser = yacc.yacc(tabmodule='FormatParserTab', debug=False)
     return lexer, parser
     
