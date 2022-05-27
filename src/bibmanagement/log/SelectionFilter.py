@@ -34,7 +34,7 @@ class Condition:
         e = getattr(record, 'entry', None)
         return ((not self.bibId or (e.id if e else '') == self.bibId)
             and (not self.type or getattr(record, 'type', '') == self.type)
-            and (not self.level or record.level_name == self.level)
+            and (not self.level or record.levelname.lower() == self.level)
             and (not self.loggerName or record.name.split('.')[1:] == self.loggerName))
         
     @staticmethod
@@ -90,11 +90,32 @@ class SelectionFilter:
     satisfy any exception conditions.
     '''
     
-    def __init__(self, discardConditions=[], exceptConditions=[]):
+    def __init__(self, discardConditions=[], exceptConditions=[], removeDuplicates=False):
         self.discardConditions = discardConditions
         self.exceptConditions = exceptConditions
+        self.duplicates = []  # a list of pair (condition, arguments)
+        self.removeDuplicates = removeDuplicates
         
     def filter(self, record):
+        ret = self._filter(record)
+        #print(self)
+        #print('process {}'.format(str(record)))
+        #print(ret)
+        #print(self.removeDuplicates)
+        if self.removeDuplicates and ret:
+            #print('dupl')
+            for d in self.duplicates:
+                if d[0](record) and d[1] == record.args:
+                    return False
+            #print('add cond')
+            e = getattr(record, 'entry', None)
+            self.duplicates.append((Condition((e.id if e else None), getattr(record, 'type'), record.levelname, '.'.join(record.name.split('.')[1:])), record.args))
+            return True
+        else:
+            #print('ret')
+            return ret
+            
+    def _filter(self, record):
         discard = False
         for c in self.discardConditions:
             if c(record):
@@ -121,4 +142,5 @@ class SelectionFilter:
         for e in cond.get('except', []):
             cds = Condition.conditions(e.get('bibId'), e.get('type'), e.get('level'), e.get('loggerName'))
             self.discardConditions.extend(cds)
+            
             
