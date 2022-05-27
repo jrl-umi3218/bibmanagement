@@ -46,7 +46,7 @@ class Logger(logging.Logger):
     
 
 def getBibLogger(name):
-    '''Create a logger and add to it the filters of the package main logger'''
+    '''Create a logger and link it to the package main logger'''
     parent = logging.getLogger('bibmanagement')
     
     logging_class = logging.getLoggerClass()  # store the current logger factory for later
@@ -56,9 +56,7 @@ def getBibLogger(name):
         logger = logging.getLogger(name)
         logging.setLoggerClass(logging_class) # be nice, revert the logger factory change
         
-        for f in parent.filters:
-            if not f in logger.filters:
-                logger.addFilter(f)
+        parent.addDescendant(logger)
         
         return logger
 
