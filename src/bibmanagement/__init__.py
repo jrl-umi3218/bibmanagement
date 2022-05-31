@@ -26,7 +26,7 @@ class PackageLogger(logging.Logger):
 # Create a customized main logger for the package.
 # The goal is to have a SelectionFilter shared accros this logger and all its
 # sub-logger.
-# We do that because filter at the logger level are not inherited. 
+# We do this because filters at the logger level are not inherited. 
 logging_class = logging.getLoggerClass()                # store the current logger factory for later
 logging._acquireLock()                                  # use the global logging lock for thread safety
 try:

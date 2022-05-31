@@ -5,6 +5,18 @@ import warnings
 import yaml
 
 class Logger(logging.Logger):
+    '''
+    A specialized logger which overloads the debug, info, warning, error and
+    critical method of classical loggers to add two arguments:
+     - entry: the bibmanagement.Entry instance (if any) about which the logging
+       is done
+     - type: the name of the log type. It is linked to the message to be logged
+     by the Logger._msg table. As such, it replaces the msg argument that is
+     passed to a classical log method call.
+     
+     The other arguments are the same as with a classical log method.
+    '''
+    
     def __init__(self, name):
         super(Logger, self).__init__(name)
         
