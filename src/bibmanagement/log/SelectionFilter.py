@@ -74,6 +74,9 @@ class Condition:
                         return Condition._iterateInputs(i+1, *args)
             else:
                 return Condition._iterateInputs(i+1, *args)
+                
+    def toDict(self):
+        return {k:v for (k,v) in self.__dict__.items() if v}
             
         
 class SelectionFilter:
@@ -98,21 +101,14 @@ class SelectionFilter:
         
     def filter(self, record):
         ret = self._filter(record)
-        #print(self)
-        #print('process {}'.format(str(record)))
-        #print(ret)
-        #print(self.removeDuplicates)
         if self.removeDuplicates and ret:
-            #print('dupl')
             for d in self.duplicates:
                 if d[0](record) and d[1] == record.args:
                     return False
-            #print('add cond')
             e = getattr(record, 'entry', None)
             self.duplicates.append((Condition((e.id if e else None), getattr(record, 'type'), record.levelname, '.'.join(record.name.split('.')[1:])), record.args))
             return True
         else:
-            #print('ret')
             return ret
             
     def _filter(self, record):
@@ -142,5 +138,4 @@ class SelectionFilter:
         for e in cond.get('except', []):
             cds = Condition.conditions(e.get('bibId'), e.get('type'), e.get('level'), e.get('loggerName'))
             self.discardConditions.extend(cds)
-            
-            
+        

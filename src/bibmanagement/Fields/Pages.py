@@ -1,9 +1,9 @@
 from bibmanagement.Fields.Field import Field
 from bibmanagement.Fields import FormatExpr
 from bibmanagement.utils.FormattedString import Single
-from bibmanagement.log import logging
+from bibmanagement import log
 
-logger = logging.getBibLogger(__name__)
+logger = log.getBibLogger(__name__)
 
 class Pages(Field):
 

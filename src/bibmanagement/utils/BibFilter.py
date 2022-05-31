@@ -1,6 +1,6 @@
-from bibmanagement.log import logging
+from bibmanagement import log
 
-logger = logging.getBibLogger(__name__)
+logger = log.getBibLogger(__name__)
 
 class Comparator:
     '''

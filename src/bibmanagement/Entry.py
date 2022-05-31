@@ -8,10 +8,10 @@ from bibmanagement.Fields.Booktitle import Booktitle
 from bibmanagement.utils.FormattedString import Single
 from bibmanagement.FormatExpr import Formatter
 from bibtexparser.latexenc import string_to_latex
-from bibmanagement.log import logging
+from bibmanagement import log
 import sys
 
-logger = logging.getBibLogger(__name__)
+logger = log.getBibLogger(__name__)
 
 class BaseEntry:
     _formatter = Formatter.Formatter()

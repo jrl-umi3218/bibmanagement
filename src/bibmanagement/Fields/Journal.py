@@ -1,10 +1,10 @@
 from bibmanagement.Fields.StringField import StringField
 from bibmanagement.utils.FormattedString import Single
-from bibmanagement.log import logging
+from bibmanagement import log
 import json
 import sys
 
-logger = logging.getBibLogger(__name__)
+logger = log.getBibLogger(__name__)
 
 class PublicationVector(StringField):
     # list of vectors of publication (i.e. journal, proceeddings,...)
