@@ -1,5 +1,5 @@
-from bibmanagement.Fields.Field import Field
-from bibmanagement.Fields.Name import Name
+from bibmanagement.fields.Field import Field
+from bibmanagement.fields.Name import Name
 from bibmanagement.utils.FormattedString import Single
 
 class Authors(Field):

@@ -1,4 +1,4 @@
-from bibmanagement.Fields import NumericField
+from bibmanagement.fields import NumericField
 import unittest
 
 if __name__ == '__main__':

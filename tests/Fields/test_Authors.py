@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Authors
+from bibmanagement.fields import Authors
 import unittest
 
 class TestAuthors(unittest.TestCase):

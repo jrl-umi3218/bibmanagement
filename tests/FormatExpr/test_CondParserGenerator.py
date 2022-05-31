@@ -1,4 +1,4 @@
-from bibmanagement.FormatExpr import CondParserGenerator
+from bibmanagement.formatExpr import CondParserGenerator
 
 def example():
     lexer, parser = CondParserGenerator.get()

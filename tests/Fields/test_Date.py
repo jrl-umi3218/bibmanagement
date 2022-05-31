@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Date
+from bibmanagement.fields import Date
 import unittest
 
 #helper to test nested functions, from https://stackoverflow.com/a/40512422

@@ -1,4 +1,4 @@
-from bibmanagement.FormatExpr.Parser import Parser
+from bibmanagement.formatExpr.Parser import Parser
 
 if __name__ == "__main__":
     class DummyField:

@@ -1,5 +1,5 @@
-from bibmanagement.Fields.StringField import StringField
-from bibmanagement.Fields.NumericField import NumericField
+from bibmanagement.fields.StringField import StringField
+from bibmanagement.fields.NumericField import NumericField
 
 
 class Address(StringField):

@@ -1,4 +1,4 @@
-from bibmanagement.FormatExpr import ParserGenerator
+from bibmanagement.formatExpr import ParserGenerator
 
 def example():
     lexer, parser = ParserGenerator.get()

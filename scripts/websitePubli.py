@@ -2,8 +2,8 @@ from bibmanagement.bibParser import *
 from bibmanagement.Entry import *
 from bibmanagement import Biblio
 from bibmanagement.utils import BibFilter
-from bibmanagement.Fields import Journal
-from bibmanagement.Fields import Booktitle
+from bibmanagement.fields import Journal
+from bibmanagement.fields import Booktitle
 import yaml
 import os
 
@@ -84,9 +84,9 @@ def addYamlData(to, additionalFilePath):
     
 def generateYaml(bibfilePath, memberFilePath, journalListPath, conferenceListPath, additionalFilePath = None, alternativeNameFilePath = None, outPath = 'publications.yml'):
     if journalListPath:
-        Fields.Journal.Journal.readVectorList(journalListPath)
+        fields.Journal.Journal.readVectorList(journalListPath)
     if conferenceListPath:
-        Fields.Booktitle.Booktitle.readVectorList(conferenceListPath)
+        fields.Booktitle.Booktitle.readVectorList(conferenceListPath)
     yamlData = generateInitialYaml(bibfilePath)
     yamlData = replaceNameWithId(yamlData, memberFilePath, alternativeNameFilePath)
     if additionalFilePath:

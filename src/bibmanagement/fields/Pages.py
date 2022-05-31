@@ -1,5 +1,5 @@
-from bibmanagement.Fields.Field import Field
-from bibmanagement.Fields import FormatExpr
+from bibmanagement.fields.Field import Field
+from bibmanagement.fields import FormatExpr
 from bibmanagement.utils.FormattedString import Single
 from bibmanagement import log
 

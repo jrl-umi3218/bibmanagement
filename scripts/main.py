@@ -1,12 +1,12 @@
 from bibmanagement.bibParser import *
 from bibmanagement.Entry import *
-from bibmanagement.Fields import Date
-from bibmanagement.Fields import FormatExpr
-from bibmanagement.Fields import StringField
-from bibmanagement.Fields import Authors
-from bibmanagement.Fields import Pages
-from bibmanagement.Fields import Journal
-from bibmanagement.FormatExpr import Parser
+from bibmanagement.fields import Date
+from bibmanagement.fields import FormatExpr
+from bibmanagement.fields import StringField
+from bibmanagement.fields import Authors
+from bibmanagement.fields import Pages
+from bibmanagement.fields import Journal
+from bibmanagement.formatExpr import Parser
 from bibmanagement import Biblio
 from bibmanagement.utils import StyleFilters as sf
 
@@ -33,24 +33,24 @@ def testExcel():
     
 def testWord():
     bib = Biblio.Biblio.fromBibFile('tests/data/AE.bib')
-    Fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
-    Fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
+    fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
+    fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
     bib.toWord(r"[Calibri][{%First% %Last%}{, }{ and }{1!}]%author%<?, ?>[i][]%title%<?, ?>{[u][%iso%]%booktitle%|[b][%abbr%]%journal%}<?, ?>%year%")
 
 def testFilter():
     def in2009(e):
         return int(str(e.format('%year%')))==2009
 
-    Fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
-    Fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
+    fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
+    fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
     bib = Biblio.Biblio.fromBibFile('tests/data/AE.bib').filter(in2009)
     bib.toWord(r"[Calibri][{%First% %Last%}{, }{ and }{1!}]%author%<?, ?>[i][]%title%<?, ?>{[u][%iso%]%booktitle%|[b][%abbr%]%journal%}<?, ?>%year%")
 
 def testStyleFilters():
     bib = Biblio.Biblio.fromBibFile('tests/data/AE.bib')
     bib.sort([('%year%','>'), '%booktitle%?2|1'])
-    Fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
-    Fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
+    fields.Journal.Journal.readVectorList('C:/work/admin/JRLPubli/journal.json')
+    fields.Booktitle.Booktitle.readVectorList('C:/work/admin/JRLPubli/conferences.json')
     boldAK = sf.Filter(type='author', contains='A. Kheddar', bold=True)
     bib.toWord(r"[Calibri][{%F% %Last%}{, }{ and }{}]%author%<?, ?>[i][]%title%<?, ?>{[u][%iso%]%booktitle%|[b][%abbr%]%journal%}<?, ?>%year%", [boldAK])
 

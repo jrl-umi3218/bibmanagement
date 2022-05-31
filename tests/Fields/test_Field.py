@@ -1,6 +1,6 @@
-from bibmanagement.Fields import Field
-from bibmanagement.Fields import NumericField
-from bibmanagement.Fields import Pages
+from bibmanagement.fields import Field
+from bibmanagement.fields import NumericField
+from bibmanagement.fields import Pages
 import unittest
 
 class Test(unittest.TestCase):

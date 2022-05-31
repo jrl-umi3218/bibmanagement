@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Booktitle
+from bibmanagement.fields import Booktitle
 import unittest
 
 if __name__ == '__main__':

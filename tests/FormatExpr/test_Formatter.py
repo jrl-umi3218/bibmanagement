@@ -1,4 +1,4 @@
-from bibmanagement.FormatExpr import Formatter
+from bibmanagement.formatExpr import Formatter
 import unittest
 
 if __name__ == '__main__':

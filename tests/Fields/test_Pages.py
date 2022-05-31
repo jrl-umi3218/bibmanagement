@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Pages
+from bibmanagement.fields import Pages
 import unittest
 
 class TestPages(unittest.TestCase):

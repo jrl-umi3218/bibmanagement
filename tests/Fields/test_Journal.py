@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Journal
+from bibmanagement.fields import Journal
 import unittest
 import os
 

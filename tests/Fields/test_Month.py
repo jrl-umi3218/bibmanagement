@@ -1,4 +1,4 @@
-from bibmanagement.Fields import Month
+from bibmanagement.fields import Month
 import unittest
 
 class TestMonth(unittest.TestCase):

@@ -1,4 +1,4 @@
-from bibmanagement.Fields import NonStandardFields
+from bibmanagement.fields import NonStandardFields
 import unittest
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 from bibmanagement.Entry import Entry
 from bibmanagement.Entry import Proceedings
 from bibmanagement.bibParser import openBib
-from bibmanagement.FormatExpr import Formatter
+from bibmanagement.formatExpr import Formatter
 from bibmanagement.utils import FormattedString
 from bibmanagement.utils import Sort as us
 from openpyxl import Workbook

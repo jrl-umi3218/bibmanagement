@@ -1,5 +1,5 @@
-from bibmanagement.FormatExpr import CondParserGenerator
-from bibmanagement.FormatExpr import ParserGenerator
+from bibmanagement.formatExpr import CondParserGenerator
+from bibmanagement.formatExpr import ParserGenerator
 
 class Parser:
     def __init__(self):

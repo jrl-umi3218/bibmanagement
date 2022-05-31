@@ -1,4 +1,4 @@
-from bibmanagement.FormatExpr import Parser
+from bibmanagement.formatExpr import Parser
 
 class Env:
     def __init__(self):

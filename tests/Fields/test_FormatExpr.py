@@ -1,4 +1,4 @@
-from bibmanagement.Fields import FormatExpr
+from bibmanagement.fields import FormatExpr
 import unittest
 
 class TestFormatExpr(unittest.TestCase):

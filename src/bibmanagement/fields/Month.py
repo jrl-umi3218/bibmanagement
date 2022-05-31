@@ -1,5 +1,5 @@
-from bibmanagement.Fields.Field import Field
-from bibmanagement.Fields.Date import Date
+from bibmanagement.fields.Field import Field
+from bibmanagement.fields.Date import Date
 from bibmanagement.utils.FormattedString import Single
 
 class Month(Field):

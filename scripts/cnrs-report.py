@@ -1,13 +1,13 @@
 from bibmanagement.bibParser import *
 from bibmanagement.Entry import *
-from bibmanagement.Fields import Date
-from bibmanagement.Fields import FormatExpr
-from bibmanagement.Fields import StringField
-from bibmanagement.Fields import Authors
-from bibmanagement.Fields import Pages
-from bibmanagement.Fields import Journal
-from bibmanagement.Fields import Booktitle
-from bibmanagement.FormatExpr import Parser
+from bibmanagement.fields import Date
+from bibmanagement.fields import FormatExpr
+from bibmanagement.fields import StringField
+from bibmanagement.fields import Authors
+from bibmanagement.fields import Pages
+from bibmanagement.fields import Journal
+from bibmanagement.fields import Booktitle
+from bibmanagement.formatExpr import Parser
 from bibmanagement import Biblio
 from bibmanagement.utils import StyleFilters as sf
 from bibmanagement.utils import BibFilter as ub

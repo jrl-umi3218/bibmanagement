@@ -1,4 +1,4 @@
-from bibmanagement.Fields.StringField import StringField
+from bibmanagement.fields.StringField import StringField
 from bibmanagement.utils.FormattedString import Single
 from bibmanagement import log
 import json
