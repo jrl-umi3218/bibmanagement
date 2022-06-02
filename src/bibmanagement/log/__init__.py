@@ -49,7 +49,8 @@ class Logger(logging.Logger):
             return {'type': type}
             
     
-    __msg = {'dismiss'                 : 'dismiss %s because %s',
+    __msg = {'chained_crossref'        : 'crossref %s in this entry contains another crossref. The second one is not processed.',
+             'dismiss'                 : 'dismiss %s because %s',
              'more_than_3_name'        : 'Name with more than 3 components: %s.',
              'non_integer'             : 'Non-integer number %s passed to %s.',
              'not_in_data'             : 'Cannot find %s in data for %s, using default name instead.',
