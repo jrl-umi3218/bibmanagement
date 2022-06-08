@@ -1,8 +1,11 @@
 from bibmanagement.Entry import *
-import bibmanagement.fields.Name
-import bibmanagement.check.LevenshteinDistance
+from bibmanagement.fields import Booktitle
+from bibmanagement.fields import Journal
+from bibmanagement import log
 import yaml
 import unicodedata
+
+logger = log.getBibLogger(__name__)
 
 #from https://stackoverflow.com/a/517974
 def removeAccents(s):
@@ -21,33 +24,33 @@ def cleanAscii(s):
 def extractAbbrFromCrossRef(c):
     s = str(c).lower().split(':')
     if len(s) != 2 and len(s) != 3:
-        print('Warning, crossref value does not have the form jrnl:abbr or conf:abbr:year')
+        logger.warning(c, 'incorrect_key_format')
         return None
     return s[1]
     
 def extractYearFromCrossRef(c):
     s = str(c).lower().split(':')
     if len(s) != 3:
-        print('Warning, crossref value does not have the form conf:abbr:year')
+        logger.warning(c, 'incorrect_key_format_conf')
         return None
     return s[2]
     
 def getJournalAbbr(j, e):
     j = str(j)
-    v = Fields.Journal.Journal.getVector(j)
+    v = Journal.Journal.getVector(j)
     if v and 'abbr' in v.keys():
         return v['abbr'].lower()
     else:
-        print('Not able to find journal {} or this journal does not have an abbreviation (entry {})'.format(j, e['ID']))    
+        logger.warning(e, 'no_abbreviation', {'pub': 'journal', 'name': j})    
         return None
         
 def getConferenceAbbr(b, e):
     b = str(b)
-    v = Fields.Booktitle.Booktitle.getVector(b)
+    v = Booktitle.Booktitle.getVector(b)
     if v and 'abbr' in v.keys():
         return v['abbr'].lower()
     else:
-        print('Not able to find booktitle {} or this booktitle does not have an abbreviation (entry {})'.format(b, e['ID']))
+        logger.warning(e, 'no_abbreviation', {'pub': 'booktitle', 'name': b})
         return None
 
 def extractProceedingsAbbr(e):
@@ -75,7 +78,7 @@ def extractProceedingsAbbr(e):
 def getFirstAuthorLastName(e):
     if 'author' in e._requiredTags:
         if not 'author' in e.keys():
-            print('Warning, no author for entry {}'.format(e['ID']))
+            logger.warning(e, 'no_author')
             return None
         return e.author[0].last.lower()
     return None
@@ -94,7 +97,7 @@ def generatePublicationKey(e):
     year = getYear(e)
     
     if not (name and abbr and year):
-        print('Warning, unable to generate key for entry {}'.format(e['ID']))
+        logger.warning(e, 'failed_to_generate_key')
         return None
     
     return ':'.join([name, abbr, year])
@@ -110,7 +113,7 @@ def generateProceedingsKey(e):
         if abbr and year:
             return ':'.join(['conf', abbr, year])   
 
-    print('Warning, unable to generate key for entry {}'.format(e['ID']))
+    logger.warning(e, 'failed_to_generate_key')
     
     
 def checkKeys(bib):
@@ -119,12 +122,12 @@ def checkKeys(bib):
             if isinstance(e, (Book, InBook, Article, InProceedings)):
                 k = generatePublicationKey(e)
                 if k != e.id and k != e.id[0:-1]:
-                    print('Entry {} should have key {}'.format(e.id, k))
+                    logger.info(e, 'non_canonical_key', k)
             elif isinstance(e, Proceedings):
                 k = generateProceedingsKey(e)
                 if k != e.id:
-                    print('Entry {} should have key {}'.format(e.id, k))
+                    logger.info(e, 'non_canonical_key', k)
             else:
-                print('Not checking for {}'.format(e.id))
+                logger.warning(e, 'skipping_key_check')
         except:
-            print(e.raw())
+            log.error(e, 'error', e.raw())

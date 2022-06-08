@@ -37,7 +37,11 @@ class Logger(logging.Logger):
     
     @staticmethod
     def _msg(entry, type):
-        return ('[{}] '.format(entry.id) if entry else '') + Logger.__msg[type]
+        if entry:
+            header = '[{}] '.format(getattr(entry, 'id', str(entry)))
+        else:
+            header = ''
+        return header + Logger.__msg[type]
     
     @staticmethod
     def _extra(entry, type):
@@ -49,17 +53,25 @@ class Logger(logging.Logger):
             return {'type': type}
             
     
-    __msg = {'chained_crossref'        : 'crossref %s in this entry contains another crossref. The second one is not processed.',
-             'dismiss'                 : 'dismiss %s because %s',
-             'more_than_3_name'        : 'Name with more than 3 components: %s.',
-             'non_integer'             : 'Non-integer number %s passed to %s.',
-             'not_in_data'             : 'Cannot find %s in data for %s, using default name instead.',
-             'not_in_vector'           : 'Cannot find %s in vector list, using default name instead.',
-             'numeric_value_expected'  : "Expected single numeric value, got %s instead.",
-             'pub_already_present'     : 'Publication vector %s is already present in the list. Its data will be overwritten.',
-             'unexpected_page_format'  : 'Unexpected page format %s.',
-             'unrecognized_field_name' : 'Unrecognized field name %s.',
-             'generic'                 : '%s'}
+    __msg = {'chained_crossref'          : 'Crossref %s in this entry contains another crossref. The second one is not processed.',
+             'dismiss'                   : 'Dismiss %s because %s.',
+             'error'                     : 'Error for the following entry:\n %s',
+             'failed_to_generate_key'    : 'Unable to generate key for this entry.',
+             'incorrect_key_format'      : 'Crossref value does not have the form jrnl:abbr or conf:abbr:year',
+             'incorrect_key_format_conf' : 'Crossref value does not have the form conf:abbr:year',
+             'more_than_3_name'          : 'Name with more than 3 components: %s.',
+             'no_abbreviation'           : 'Not able to find %(pub)s %(name)s or this %(pub)s does not have an abbreviation.',
+             'no_author'                 : 'No author for this entry',
+             'non_canonical_key'         : 'Not the canonical key. Auto-computed key: %s.',
+             'non_integer'               : 'Non-integer number %s passed to %s.',
+             'not_in_data'               : 'Cannot find %s in data for %s, using default name instead.',
+             'not_in_vector'             : 'Cannot find %s in vector list, using default name instead.',
+             'numeric_value_expected'    : "Expected single numeric value, got %s instead.",
+             'pub_already_present'       : 'Publication vector %s is already present in the list. Its data will be overwritten.',
+             'skipping_key_check'        : 'No rule defines for this entry type. Skipping key check',
+             'unexpected_page_format'    : 'Unexpected page format %s.',
+             'unrecognized_field_name'   : 'Unrecognized field name %s.',
+             'generic'                   : '%s'}
     
 
 def getBibLogger(name):
@@ -108,6 +120,8 @@ def setupSelectHandler(addConsole=True):
     if addConsole:
         ch = logging.StreamHandler()
         packageLogger.addHandler(ch)
+        
+    return sh
     
 def startLogSelection(yamlFile):
     '''
