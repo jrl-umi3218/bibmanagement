@@ -42,3 +42,5 @@ packageLogger.addFilter(f)
 
 if 'unittest' in sys.modules:
     packageLogger.setLevel(logging.ERROR)
+else:
+    packageLogger.setLevel(logging.INFO)

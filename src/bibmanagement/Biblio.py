@@ -44,11 +44,17 @@ class Biblio:
         self._dictMap[e['ID']] = len(self.entries)
         self.entries.append(Entry(e))
 		
-    def __getitem__(self, key):
-        return self.entries[self._dictMap[key]]
+    def __getitem__(self, keyOrIndex):
+        if isinstance(keyOrIndex, str):
+            return self.entries[self._dictMap[keyOrIndex]]
+        else:
+            return self.entries[keyOrIndex]
         
     def __contains__(self, key):
         return key in self._dictMap
+        
+    def __len__(self):
+        return len(self.entries)
 
     def resolveCrossref(self, removeProceedings=True):
         needResolve = False
