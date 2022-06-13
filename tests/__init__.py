@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 def testEntries():
     '''Partial biblio from \"G. Perec, Experimental demonstration of the tomatotopic organization in the Soprano (Cantatrix sopranica L.)\"'''
     e1 = {'ID': 'chou:laryngol:1927',

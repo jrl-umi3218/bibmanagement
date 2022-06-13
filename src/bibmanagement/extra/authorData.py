@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 import json
 from extra.Position import *
 

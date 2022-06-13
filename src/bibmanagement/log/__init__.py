@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.log import SelectionFilter
 from bibmanagement.log import SelectionHandler
 import logging

@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.fields.Field import Field
 from bibmanagement.fields import FormatExpr
 from bibmanagement.utils.FormattedString import Single

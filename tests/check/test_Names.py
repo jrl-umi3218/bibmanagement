@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.check import Names
 from bibmanagement.Biblio import Biblio
 from .. import testEntries

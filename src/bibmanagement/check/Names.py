@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement import Biblio
 from bibmanagement.fields import Name
 from bibmanagement.check import LevenshteinDistance

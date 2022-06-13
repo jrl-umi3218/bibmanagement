@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 class MixComp:
     '''A class for comparing tuples with a mix of lower and greater comparison'''
 

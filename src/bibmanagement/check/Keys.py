@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.Entry import *
 from bibmanagement.fields import Booktitle
 from bibmanagement.fields import Journal

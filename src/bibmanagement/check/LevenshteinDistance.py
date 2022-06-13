@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 def distance(word1, word2):
     '''
     Compute the Levenshtein distance between 2 words, i.e. the minimum number

@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.bibParser import *
 from bibmanagement.Entry import *
 from bibmanagement.fields import Date

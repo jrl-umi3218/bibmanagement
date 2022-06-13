@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.formatExpr import CondParserGenerator
 from bibmanagement.formatExpr import ParserGenerator
 

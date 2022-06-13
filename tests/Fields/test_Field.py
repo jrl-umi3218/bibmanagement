@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.fields import Field
 from bibmanagement.fields import NumericField
 from bibmanagement.fields import Pages

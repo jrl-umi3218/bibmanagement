@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.formatExpr.Parser import Parser
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 from bibmanagement.fields.Authors import *
 from bibmanagement.fields.BasicFields import *
 from bibmanagement.fields.NonStandardFields import *

@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 class Style:
     '''A class specifying the style of some text.'''
     _defaultBold = False

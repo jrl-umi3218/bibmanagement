@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import *

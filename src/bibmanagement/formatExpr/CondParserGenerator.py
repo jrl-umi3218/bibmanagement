@@ -1,3 +1,5 @@
+# Copyright 2019-2022 CNRS-AIST JRL
+
 import ply.lex as lex
 import ply.yacc as yacc
 import types
