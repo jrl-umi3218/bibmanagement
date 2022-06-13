@@ -1,6 +1,4 @@
-import sys 
-sys.path.append('..')
-import bibParser
+from bibmanagement import bibParser
 
 def stringKey(e):
     return e[1].split('=')[0].strip().lower()
@@ -95,4 +93,4 @@ def cmpRawEntries(e1, e2):
             
 
 # e = bibParser.rawEntries(...)
-# e.sort(key=cmp_to_key(Check.Order.cmpRawEntries))
+# e.sort(key=cmp_to_key(Order.cmpRawEntries))

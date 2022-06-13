@@ -15,33 +15,35 @@ class Logger(logging.Logger):
      passed to a classical log method call.
      
      The other arguments are the same as with a classical log method.
+     If kwargs contains an entry additionalMsg, it is added after the main
+     message and removed from kwargs for the subsequent process.
     '''
     
     def __init__(self, name):
         super(Logger, self).__init__(name)
         
     def debug(self, entry, type, *args, **kwargs):
-        super(Logger, self).debug(Logger._msg(entry, type), *args, extra = Logger._extra(entry, type), **kwargs)
+        super(Logger, self).debug(Logger._msg(entry, type, kwargs.pop('additionalMsg', '')), *args, extra = Logger._extra(entry, type), **kwargs)
         
     def info(self, entry, type, *args, **kwargs):
-        super(Logger, self).info(Logger._msg(entry, type), *args, extra = Logger._extra(entry, type), **kwargs)
+        super(Logger, self).info(Logger._msg(entry, type, kwargs.pop('additionalMsg', '')), *args, extra = Logger._extra(entry, type), **kwargs)
         
     def warning(self, entry, type, *args, **kwargs):
-        super(Logger, self).warning(Logger._msg(entry, type), *args, extra = Logger._extra(entry, type), **kwargs)
+        super(Logger, self).warning(Logger._msg(entry, type, kwargs.pop('additionalMsg', '')), *args, extra = Logger._extra(entry, type), **kwargs)
         
     def error(self, entry, type, *args, **kwargs):
-        super(Logger, self).error(Logger._msg(entry, type), *args, extra = Logger._extra(entry, type), **kwargs)
+        super(Logger, self).error(Logger._msg(entry, type, kwargs.pop('additionalMsg', '')), *args, extra = Logger._extra(entry, type), **kwargs)
         
     def critical(self, entry, type, *args, **kwargs):
-        super(Logger, self).critical(Logger._msg(entry, type), *args, extra = Logger._extra(entry, type), **kwargs)
+        super(Logger, self).critical(Logger._msg(entry, type, kwargs.pop('additionalMsg', '')), *args, extra = Logger._extra(entry, type), **kwargs)
     
     @staticmethod
-    def _msg(entry, type):
+    def _msg(entry, type, additional=''):
         if entry:
             header = '[{}] '.format(getattr(entry, 'id', str(entry)))
         else:
             header = ''
-        return header + Logger.__msg[type]
+        return header + Logger.__msg[type] + additional
     
     @staticmethod
     def _extra(entry, type):
@@ -66,7 +68,10 @@ class Logger(logging.Logger):
              'non_integer'               : 'Non-integer number %s passed to %s.',
              'not_in_data'               : 'Cannot find %s in data for %s, using default name instead.',
              'not_in_vector'             : 'Cannot find %s in vector list, using default name instead.',
-             'numeric_value_expected'    : "Expected single numeric value, got %s instead.",
+             'numeric_value_expected'    : 'Expected single numeric value, got %s instead.',
+             'possible_abbr'             : 'Possible abbreviation: %s',
+             'possible_typo'             : 'Possible typo: %s -> %s',
+             'possible_name_switch'      : 'Possible name switch: %s <->%s',
              'pub_already_present'       : 'Publication vector %s is already present in the list. Its data will be overwritten.',
              'skipping_key_check'        : 'No rule defines for this entry type. Skipping key check',
              'unexpected_page_format'    : 'Unexpected page format %s.',

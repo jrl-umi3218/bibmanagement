@@ -1,7 +1,47 @@
-import Biblio
-import Fields.Name
-import Check.LevenshteinDistance
+from bibmanagement import Biblio
+from bibmanagement.fields import Name
+from bibmanagement.check import LevenshteinDistance
+from bibmanagement import log
+import logging
 import yaml
+
+logger = log.getBibLogger(__name__)
+
+#TODO: we are using a ad hoc system based on an ignoreFile, whose role is to
+# discard false positive outputs of the functions in this module.
+# The newer logging system with its own discard mechanism is offering an 
+# alternative, more generic solution. We could thus remove all the code
+# related to the ignoreFile.
+
+def checkLogger():
+    """
+    By default the bibmanagement logger logs message for the level INFO and
+    above, but the default Handler (logging.lastResort) only prints out logs
+    with level WARNING and above.
+    We don't want to change the behavior of the default Handler, to avoid the
+    bibmanagement package to be intrusive. This method warns the user that
+    some useful logs emitted by the current module might be discarded.
+    """
+    
+    packageLogger = logging.getLogger('bibmanagement')
+    rootLogger = logging.getLogger()
+    if not packageLogger.handlers and not rootLogger.handlers and not logger.handlers and logging.lastResort.level > logging.INFO:
+        logger.warning(None, 'generic', 
+'''
+!Warning!
+Methods in bibmanagement.check.Names rely on emitting log at the logging.INFO
+level. With the current logging configuration, these logs might not be
+displayed. This is in particular the case if you are using the default logging
+configuration.
+
+To correct this, the simpler solution is to perform the following:
+    from bibmanagement import log
+    log.setupSelectHandler()
+    
+Otherwise, if you know how the logging library works in python, you can add
+a logging.Handler that accepts logging.INFO level to the root logger, the
+\'bibmanagement.check.Names\' logger or any of its ancestor.
+''')
 
 def listNames(bib, mode='both'):
     l = {}
@@ -18,7 +58,7 @@ def listNames(bib, mode='both'):
     for e in bib.entries:
         if 'author' in e._requiredTags:
             if not 'author' in e.keys():
-                print('Warning, no author for entry ' + e['ID'])
+                logger.warning(e, 'no_author')
                 continue
             for a in e.author:
                 name = render(a)
@@ -32,6 +72,8 @@ def listNames(bib, mode='both'):
 
 def probableTypo(bib, distMax = 2, ignoreFile = None):
     """List the probable typos on the couple (First name, Family name)"""
+    checkLogger()
+    
     if ignoreFile:
         with open(ignoreFile, encoding='utf8') as file:
             ignore = yaml.load(file, Loader=yaml.FullLoader)
@@ -44,7 +86,7 @@ def probableTypo(bib, distMax = 2, ignoreFile = None):
     matches={};
     for i in range(len(s)):
         for j in range(i+1,len(s)):
-            dist = Check.LevenshteinDistance.distance(s[i][0],s[j][0])
+            dist = LevenshteinDistance.distance(s[i][0],s[j][0])
             if dist<=distMax:
                 matches[i] = (j, dist)
                 
@@ -58,9 +100,11 @@ def probableTypo(bib, distMax = 2, ignoreFile = None):
                 skip = True
                 break
         if not skip:
-            print("possible typo ({}): {} -> {}".format(d, n1, n2) + " ({})  {}".format(s[j][1], l[n1]))
+            logger.info(bib[l[n1][0]], 'possible_typo', n1, n2, additionalMsg =' ({})'.format(s[j][1]))
 
 def probableSwitch(bib, distMax = 2, ignoreFile = None):
+    checkLogger()
+    
     if ignoreFile:
         with open(ignoreFile, encoding='utf8') as file:
             ignore = yaml.load(file, Loader=yaml.FullLoader)
@@ -75,8 +119,8 @@ def probableSwitch(bib, distMax = 2, ignoreFile = None):
         fi,li = s[i][0]
         for j in range(i+1,len(s)):
             fj,lj = s[j][0]
-            d1 = Check.LevenshteinDistance.distance(fi,lj)
-            d2 = Check.LevenshteinDistance.distance(fj,li)
+            d1 = LevenshteinDistance.distance(fi,lj)
+            d2 = LevenshteinDistance.distance(fj,li)
             if d1+d2<=distMax:
                 matches[i] = j
                 
@@ -89,9 +133,11 @@ def probableSwitch(bib, distMax = 2, ignoreFile = None):
                 skip = True
                 break
         if not skip:
-            print("Possible name switch: {} <-> {} ({})".format(n1, n2, s[j][1]) + " {}".format(l[n1]))
+            logger.info(bib[l[n1][0]], 'possible_name_switch', n1, n2, additionalMsg=' ({})'.format(s[j][1]))
             
 def possibleAbbreviation(bib, ignoreFile = None):
+    checkLogger()
+    
     if ignoreFile:
         with open(ignoreFile, encoding='utf8') as file:
             ignore = yaml.load(file, Loader=yaml.FullLoader)
@@ -103,7 +149,7 @@ def possibleAbbreviation(bib, ignoreFile = None):
     l.update(listNames(bib, 'last'))
     for n,p in l.items():
         if (len(n)==1 or (len(n)==2 and n[1]=='.')) and not n in ignoreName:
-            print("Possible abbreviation: {} {}".format(n,p))
+            logger.info(bib[p[0]], 'possible_abbr', n)
             
     
 def all(bib, ignoreFile = None):

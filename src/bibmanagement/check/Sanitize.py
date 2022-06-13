@@ -1,10 +1,7 @@
-import sys 
-sys.path.append('..')
-
-import bibParser
-import Biblio
-import Check.Crossref
-import Check.Order
+from bibmanagement import bibParser
+from bibmanagement import Biblio
+from bibmanagement.check import Crossref
+from bibmanagement.check import Order
 from functools import cmp_to_key
 
 def getInteractiveInput(d):
@@ -15,7 +12,7 @@ def getInteractiveInput(d):
     return val
 
 def removeFromEntry(e, dupl, interactive=False):
-    k = Check.Order.getKey(e)
+    k = Order.getKey(e)
     lines = []
     cpt = 0
     fields = {d[2]:i for (i,d) in enumerate(dupl) if d[0] == k}
@@ -76,7 +73,7 @@ def removeUnecessaryProceedings(entries, unused):
     discard = []
     
     for e in entries:
-        k = Check.Order.getKey(e)
+        k = Order.getKey(e)
         if k in unused:
             discard.append(e)
         else:
@@ -108,11 +105,11 @@ def removeUnecessary(inFile, outFile, fields = True, entries = False, unusedEntr
     e = bibParser.rawEntries(inFile)
     
     if fields:
-        [dupl, over] = Check.Crossref.duplicatedFields(bib)
+        [dupl, over] = Crossref.duplicatedFields(bib)
         e = removeDuplicatedFields(e, dupl)
         
     if entries:
-        unused = Check.Crossref.unusedProceedings(bib)
+        unused = Crossref.unusedProceedings(bib)
         [e, discard] = removeUnecessaryProceedings(e, unused)
         if unusedEntryFile:
             with open(unusedEntryFile, 'w', encoding=encoding) as f:
@@ -129,7 +126,7 @@ def reorder(inFile, outFile):
     """ Reorder the items in the input file according to the order given by Check.Order.cmpRawEntries"""
     encoding = bibParser.getEncoding(inFile)
     e = bibParser.rawEntries(inFile)
-    e.sort(key=cmp_to_key(Check.Order.cmpRawEntries))
+    e.sort(key=cmp_to_key(Order.cmpRawEntries))
     
     with open(outFile, 'w', encoding=encoding) as f:
         for entry in e:
@@ -143,7 +140,7 @@ def removeOverwrittenFields(inFile, outFile):
     bib = Biblio.Biblio.fromBibFile(inFile)
     e = bibParser.rawEntries(inFile)
 
-    [dupl, over] = Check.Crossref.duplicatedFields(bib)
+    [dupl, over] = Crossref.duplicatedFields(bib)
     e = removeDuplicatedFields(e, over, True)
               
     with open(outFile, 'w', encoding=encoding) as f:
