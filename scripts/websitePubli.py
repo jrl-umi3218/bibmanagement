@@ -37,7 +37,7 @@ def generateYamlEntry(e):
 def generateInitialYaml(bibfilePath):
     """Generate the yaml file containing the journal, conference and book articles from the given bib file."""
     bib = Biblio.Biblio.fromBibFile(bibfilePath).resolveCrossref()
-    bib = bib.filter(utils.BibFilter.Selector(committee=True))
+    bib = bib.filter(BibFilter.Selector(committee=True))
     select = (Article,InProceedings,Book)
     yamlData = [generateYamlEntry(e) for e in bib.entries if isinstance(e, select)]
     return yamlData
@@ -86,9 +86,9 @@ def addYamlData(to, additionalFilePath):
     
 def generateYaml(bibfilePath, memberFilePath, journalListPath, conferenceListPath, additionalFilePath = None, alternativeNameFilePath = None, outPath = 'publications.yml'):
     if journalListPath:
-        fields.Journal.Journal.readVectorList(journalListPath)
+        Journal.Journal.readVectorList(journalListPath)
     if conferenceListPath:
-        fields.Booktitle.Booktitle.readVectorList(conferenceListPath)
+        Booktitle.Booktitle.readVectorList(conferenceListPath)
     yamlData = generateInitialYaml(bibfilePath)
     yamlData = replaceNameWithId(yamlData, memberFilePath, alternativeNameFilePath)
     if additionalFilePath:
@@ -107,7 +107,7 @@ def generateYaml(bibfilePath, memberFilePath, journalListPath, conferenceListPat
 
 def generateBib(bibfilePath, outDirPath):
     bib = Biblio.Biblio.fromBibFile(bibfilePath).resolveCrossref()
-    bib = bib.filter(utils.BibFilter.Selector(committee=True))
+    bib = bib.filter(BibFilter.Selector(committee=True))
     select = (Article,InProceedings,Book)
     for e in bib.entries:
         bibPath = outDirPath + e.id.replace(':','_')+'.bib'
