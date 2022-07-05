@@ -1,0 +1,42 @@
+[
+{
+    "name"        : "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "iso"         : "IEEE/RSJ Int. Conf. Intell. Robot. Syst.",
+    "ieee"        : "IEEE/RSJ Int. Conf. Intelligent Robots and Systems",
+    "abbr"        : "IROS",
+    "alternative" : [],
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "IEEE International Conference on Robotics and Automation",
+    "iso"         : "IEEE Int. Conf. Robot. Autom.",
+    "ieee"        : "IEEE Int. Conf. Robotics and Automation",
+    "abbr"        : "ICRA",
+    "alternative" : [],
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "日本ロボット学会学術講演会",
+    "iso"         : "日本ロボット学会学術講演会",
+    "ieee"        : "日本ロボット学会学術講演会",
+    "abbr"        : "RSJ",
+    "alternative" : [],
+    "language"    : "japanese",
+    "committee"   : false,
+    "national"    : true
+},
+{
+    "name"        : "日本機械学会ロボティクス・メカトロニクス講演会",
+    "iso"         : "ロボティクス・メカトロニクス講演会",
+    "ieee"        : "ロボティクス・メカトロニクス講演会",
+    "abbr"        : "Robomech",
+    "alternative" : ["The Robotics and Mechatronics Conference"],
+    "language"    : "japanese",
+    "committee"   : false,
+    "national"    : true
+}
+]

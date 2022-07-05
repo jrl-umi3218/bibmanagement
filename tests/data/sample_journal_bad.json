@@ -1,0 +1,38 @@
+[
+{
+    "name"        : "Autonomous Robots",
+    "iso"         : "Auton. Robot.",
+    "jcr"         : "AUTON ROBOT",
+    "abbr"        : "AURO",
+    "alternative" : [],
+    "issn"        : "0929-5593",
+    "eissn"       : "1573-7527",
+    "if"          : 3.634,
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "IEEE Robotics and Automation Letters",
+    "iso"         : "IEEE Robot. Autom. Lett.",
+    "jcr"         : "IEEE ROBOT AUTOMAT LETT",
+    "abbr"        : "RAL",
+    "alternative" : [],
+    "issn"        : "2377-3766",
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "iso"         : "Int. J. Robot. Res.",
+    "jcr"         : "INT J ROBOT RES",
+    "abbr"        : "IJRR",
+    "alternative" : ["International Journal of Robotics Research"],
+    "issn"        : "0278-3649",
+    "eissn"       : "1741-3176",
+    "if"          : 6.134,
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+}
+]

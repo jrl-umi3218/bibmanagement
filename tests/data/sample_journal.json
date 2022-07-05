@@ -1,0 +1,61 @@
+[
+{
+    "name"        : "Autonomous Robots",
+    "iso"         : "Auton. Robot.",
+    "jcr"         : "AUTON ROBOT",
+    "abbr"        : "AURO",
+    "alternative" : [],
+    "issn"        : "0929-5593",
+    "eissn"       : "1573-7527",
+    "if"          : 3.634,
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+  "name"        : "Advanced Robotics",
+    "iso"         : "Adv. Robots.",
+    "jcr"         : "ADV ROBOTICS",
+    "alternative" : [ ],
+    "issn"        : "0169-1864",
+    "eissn"       : "1568-5535",
+    "if"          : 1.104,
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "IEEE Robotics and Automation Letters",
+    "iso"         : "IEEE Robot. Autom. Lett.",
+    "jcr"         : "IEEE ROBOT AUTOMAT LETT",
+    "abbr"        : "RAL",
+    "alternative" : [],
+    "issn"        : "2377-3766",
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "The International Journal of Robotics Research",
+    "iso"         : "Int. J. Robot. Res.",
+    "jcr"         : "INT J ROBOT RES",
+    "abbr"        : "IJRR",
+    "alternative" : ["International Journal of Robotics Research"],
+    "issn"        : "0278-3649",
+    "eissn"       : "1741-3176",
+    "if"          : 6.134,
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+},
+{
+    "name"        : "eNeuro",
+    "iso"         : "eNeuro",
+    "jcr"         : "ENEURO",
+    "abbr"        : "eNeuro",
+    "alternative" : [],
+    "language"    : "english",
+    "committee"   : true,
+    "national"    : false
+}
+]

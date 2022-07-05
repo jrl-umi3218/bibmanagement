@@ -1,0 +1,402 @@
+@String{humanoids    = {IEEE-RAS International Conference on Humanoid Robots}}
+@String{icra         = {IEEE International Conference on Robotics and Automation}}
+@String{iros         = {IEEE/RSJ International Conference on Intelligent Robots and Systems}}
+@String{robomech     = {The Robotics and Mechatronics Conference}}
+@String{rsj          = {日本ロボット学会学術講演会}}
+
+@Article{samadi:ral:2021,
+  author   = {Samadi, Saeid and Roux, Julien and Tanguy, Arnaud and Caron, St\'{e}phane and Kheddar, Abderrahmane},
+  title    = {Humanoid Control Under Interchangeable Fixed and Sliding Unilateral Contacts},
+  year     = {2021},
+  month    = apr,
+  number   = {2},
+  pages    = {4032--4039},
+  volume   = {6},
+  abstract = {In this letter, we propose a whole-body control strategy for humanoid robots in multi-contact settings that enables switching between fixed and sliding contacts under active balance. We compute, in real-time, a safe center-of-mass position and wrench distribution of the contact points based on the Chebyshev center. Our solution is formulated as a quadratic programming problem without a priori computation of balance regions. We assess our approach with experiments highlighting switches between fixed and sliding contact modes in multi-contact configurations. A humanoid robot demonstrates such contact interchanges from fully-fixed to multi-sliding and also shuffling of the foot. The scenarios illustrate the performance of our control scheme in achieving the desired forces, CoM position attractor, and planned trajectories while actively maintaining balance.},
+  crossref = {jrnl:ral},
+  doi      = {10.1109/LRA.2021.3066965},
+  keywords = {Chebyshev center, humanoid robots, multi-sliding and -fixed unilateral non coplanar contacts},
+  lab      = {JRL},
+  url      = {https://ieeexplore.ieee.org/document/9380971},
+}
+
+@Article{kanehiro:ar:2014,
+  author   = {Kanehiro, Fumio and Yoshida, Eiichi and Yokoi, Kazuhito},
+  title    = {Efficient reaching motion planning method for low-level autonomy of teleoperated humanoid robots},
+  year     = {2014},
+  number   = {7},
+  volume   = {28},
+  abstract = {This paper addresses an efficient reaching motion planning method tailored for teleoperated humanoid robots in complex environments. This method offers low-level autonomy that allows the robot to autonomously plan and execute simple tasks, thus making teleoperation easy. Efficiency is achieved by combining the phases of planning and execution. The planning phase quickly decides on a reaching motion by approximating mass distribution which enables analytical solutions of inverse kinematics. The execution phase executes the planned path while compensating for the approximation error, as long as other constraints are maintained. Simulations confirm that (1) a reaching motion is planned in approximately one second for the HRP-2 humanoid robot with 30 degrees of freedom in a constrained environment with pipes and (2) the execution is done in real-time.},
+  crossref = {jrnl:ar},
+  doi      = {https://doi.org/10.1080/01691864.2013.876931},
+  keywords = {humanoid, motion planning, inverse kinematics, RRT},
+  lab      = {JRL},
+  url      = {https://staff.aist.go.jp/e.yoshida/papers/kanehiro_ar14_paper.pdf},
+}
+
+@Article{ayusawa:ijrr:2014,
+  author   = {Ayusawa, Ko and Venture, Gentiane and Nakamura, Yoshihiko},
+  title    = {Identifiability and identification of inertial parameters using the underactuated base-link dynamics for legged multibody systems},
+  year     = {2014},
+  number   = {3},
+  pages    = {446--468},
+  volume   = {33},
+  abstract = {In this paper we study the dynamics of multibody systems with the base not permanently fixed to the inertial frame, or more specifically legged systems such as humanoid robots and humans. The issue is to be approached in terms of the identification theory developed in the field of robotics. The under-actuated base-link which characterizes the dynamics of legged systems is the focus of this work. The useful mechanical feature to analyze the dynamics of legged system is proven: the set of inertial parameters appearing in the equation of motion of the under-actuated base is equivalent to the set in the equations of the whole body. In particular, when no external force acts on the system, all of the parameters in the set except the total mass are generally identifiable only from the observation of the free-flying motion. We also propose a method to identify the inertial parameters based on the dynamics of the under-actuated base. The method does not require the measurement of the joint torques. Neither the joint frictions nor the actuator dynamics need to be considered. Even when the system has no external reaction force, the method is still applicable. The method has been tested on both a humanoid robot and a human, and the experimental results are shown.},
+  crossref = {jrnl:ijrr},
+  doi      = {https://doi.org/10.1177/0278364913495932},
+  keywords = {Humanoid robots, free-floating systems, inertial parameters, identification, identifiability},
+  lab      = {JRL},
+  url      = {https://staff.aist.go.jp/k.ayusawa/pdf/Ayusawa_2014_IJRR.pdf},
+}
+
+@Article{escande:ijrr:2014,
+  author   = {Escande, Adrien and Mansard, Nicolas and Wieber, Pierre-Brice},
+  title    = {Hierarchical Quadratic Programming: Fast Online Humanoid-Robot Motion Generation},
+  year     = {2014},
+  month    = may,
+  number   = {7},
+  pages    = {1006--1028},
+  volume   = {33},
+  abstract = {Hierarchical least-square optimization is often used in robotics to inverse a direct function when multiple incompatible objectives are involved. Typical examples are inverse kinematics or dynamics. The objectives can be given as equalities to be satisfied (e.g. point-to-point task) or as areas of satisfaction (e.g. the joint range). This two-part paper proposes a complete solution to resolve multiple least-square quadratic problems of both equality and inequality constraints ordered into a strict hierarchy. Our method is able to solve a hierarchy of only equalities ten time faster than the classical method and can consider inequalities at any level while running at the typical control frequency on whole-body size problems. This generic solver is used to resolve the redundancy of humanoid robots while generating complex movements in constrained environment. In this first part, we establish the mathematical bases underlying the hierarchical problem and propose a dedicated solver. When only equalities are involved, the solver amounts to the classical solution used to handle redundancy in inverse kinematics in a far more efficient way. It is able to handle inequalities at any priority levels into a single resolution scheme, which avoids the high number of iterations encountered with cascades of solvers. A simple example is given to illustrate the interest of our approach. The second part of the paper focuses on the implementation of the solver for inverse kinematics and its use to generate robot motions.},
+  crossref = {jrnl:ijrr},
+  doi      = {https://doi.org/10.1177/0278364914521306},
+  keywords = {Inverse kinematics, redundancy, task hierarchy, humanoid robot},
+  lab      = {JRL},
+  url      = {https://hal.archives-ouvertes.fr/file/index/docid/751924/filename/m.pdf},
+}
+
+@Article{mittendorfer:ar:2015,
+  author   = {Mittendorfer, Phillipp and Yoshida, Eiichi and Cheng, Gordon},
+  title    = {Realizing Whole-body Tactile Interactions with a Self-organizing, Multi-modal Artificial Skin on a Humanoid Robot},
+  year     = {2015},
+  month    = jan,
+  note     = {Best Paper Award},
+  number   = {1},
+  pages    = {51--67},
+  volume   = {9},
+  abstract = {In this paper, we present a new approach to realize whole-body tactile interactions with a self-organizing, multi-modal artificial skin on a humanoid robot. We, therefore, equipped the whole upper body of the humanoid HRP-2 with various patches of CellulARSkin – a modular artificial skin. In order to automatically handle a potentially high number of tactile sensor cells and motors units, the robot uses open-loop exploratio nmotions, and distributed accelerometers in the artificial skin cells, to acquire its self-centered sensory-motor knowledge. This body self-knowledge is then utilized to transfer multi-modal tactile stimulations into reactive body motions. Tactile events provide feedback on changes of contact on the whole-body surface.We demonstrate the feasibility of our approach on a humanoid, here HRP-2, grasping large and unknown objects only via tactile feedback. Kinesthetically taught grasping trajectories, are reactively adapted tothe size and stiffness of different test objects. Our paper contributes the first realization of a self-organizing tactile sensor-behavior mapping on a full-sized humanoid robot, enabling a position controlled robot to compliantly handle objects.},
+  crossref = {jrnl:ar},
+  doi      = {http://dx.doi.org/10.1080/01691864.2014.952493},
+  keywords = {artificial skin; self-organization; whole-body tactile interaction; humanoid robots},
+  lab      = {JRL},
+  url      = {https://staff.aist.go.jp/e.yoshida/papers/Mittendorfer_2014AR.pdf},
+}
+
+@Article{yamada:jst:2016,
+  author   = {Yamada, Yoji and Kudo, Naoki and Ayusawa, Ko and Yoshiyasu, Yusuke and Yoshida, Eiichi},
+  title    = {Ongoing studies on investigation into criteria into lumber strength and development of a simulator for lumber stress evaluation},
+  year     = {2016},
+  month    = jun,
+  number   = {4},
+  pages    = {244--248},
+  volume   = {34},
+  abstract = {本稿では，本特集のターゲットである「ロボット介護機器開発・導入促進事業」に関して，移乗支援機器使用時の安全確保を目的として名古屋大学と産業技術研究所において展開している研究開発活動の現状を紹介する．一般に安全性の確保は，技術開発の観点では，安全性検証（Verification）すなわち安全性を保証する基準データを作ることと，妥当性確認（Validation）すなわち機器の性能が基準データを満たすことを確かめることの 2相の活動が要求される．我々はこれらを移乗支援機器の開発に当てはめて，安全性検証の観点では，移乗介助作業時の介護者の腰部負担に関する安全基準データを求めること，そして，妥当性確認の観点では，移乗介助作業シナリオに沿った介護機器の使用時に，被介護者あるいは介護者の姿勢によらず介護機器の安全性が確認できるかどうかを評価すること，をそれぞれ目標として研究開発を行ってきている．以下，本稿の前半では名古屋大学の安全知能学研究チームにおける活動を取り上げ，腰椎に損傷をもたらすレベルの強度に関する基準データの加工について報告する．また，後半では産業技術総合研究所の力学研究チームにおける活動を取り上げ，ロボット介護機器を利用する際に，被介護者に加わる負担を評価するためのシミュレータをそれぞれ紹介する．},
+  crossref = {jrnl:jst},
+  doi      = {10.7210/jrsj.34.244},
+  keywords = {Verification and Validation, Transfer Work, Lumber Damage and Compressive Strength, Lumber Stress, Human-device Interaction, Human Simulation},
+  url      = {https://www.jstage.jst.go.jp/article/jrsj/34/4/34_34_244/_pdf/-char/ja},
+}
+
+@Article{ikegami:eneuro:2017,
+  author   = {Ikegami, Tsuyoshi and Ganesh, Gowrishankar},
+  title    = {Shared Mechanisms in the Estimation of Self-Generated Actions and the Prediction of Other's Actions by Humans},
+  year     = {2017},
+  month    = nov,
+  number   = {6},
+  pages    = {ENEURO.0341--17.2017},
+  volume   = {4},
+  abstract = {The question of how humans predict outcomes of observed motor actions by others is a fundamental problem in cognitive and social neuroscience. Previous theoretical studies have suggested that the brain uses parts of the forward model (used to estimate sensory outcomes of self-generated actions) to predict outcomes of observed actions. However, this hypothesis has remained controversial due to the lack of direct experimental evidence. To address this issue, we analyzed the behavior of darts experts in an understanding learning paradigm and utilized computational modeling to examine how outcome prediction of observed actions affected the participants’ ability to estimate their own actions. We recruited darts experts because sports experts are known to have an accurate outcome estimation of their own actions as well as prediction of actions observed in others. We first show that learning to predict the outcomes of observed dart throws deteriorates an expert’s abilities to both produce his own darts actions and estimate the outcome of his own throws (or self-estimation). Next, we introduce a state-space model to explain the trial-by-trial changes in the darts performance and self-estimation through our experiment. The model-based analysis reveals that the change in an expert’s self-estimation is explained only by considering a change in the individual’s forward model, showing that an improvement in an expert’s ability to predict outcomes of observed actions affects the individual’s forward model. These results suggest that parts of the same forward model are utilized in humans to both estimate outcomes of self-generated actions and predict outcomes of observed actions.},
+  crossref = {jrnl:eneuro},
+  doi      = {10.1523/eneuro.0341-17.2017},
+  keywords = {Action observation, action prediction, forward model, motor system},
+  lab      = {JRL},
+  url      = {https://www.eneuro.org/content/4/6/ENEURO.0341-17.2017.long},
+}
+
+@Article{bolotnikova:ral:2020,
+  author   = {Bolotnikova, Anastasia and Courtois, S\'ebastien and Kheddar, Abderrahmane},
+  title    = {Multi-Contact Planning on Humans for Physical Assistance by Humanoids},
+  year     = {2020},
+  month    = jan,
+  number   = {1},
+  pages    = {135--142},
+  volume   = {5},
+  abstract = {For robots to interact with humans in close proximity safely and efficiently, a specialized method to compute whole-body robot posture and plan contact locations is required. In our work, a humanoid robot is used as a caregiver that is performing a physical assistance task. We propose a method for formulating and initializing a non-linear optimization posture generation problem from an intuitive description of the assistance task and the result of a human point cloud processing. The proposed method allows to plan wholebody posture and contact locations on a task-specific surface of a human body, under robot equilibrium, friction cone, torque/joint limits, collision avoidance, and assistance task inherent constraints. The proposed framework can uniformly handle any arbitrary surface generated from point clouds, for autonomously planing the contact locations and interaction forces on potentially moving, movable, and deformable surfaces, which occur in direct physical human-robot interaction. We conclude the letter with examples of posture generation for physical human-robot interaction scenarios.},
+  crossref = {jrnl:ral},
+  doi      = {10.1109/LRA.2019.2947907},
+  keywords = {Humanoid robots, physical human-robot interaction, physically assistive devices, robot companions},
+  lab      = {JRL},
+  url      = {https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8873658},
+}
+
+@InProceedings{yoshida:iros:1999,
+  author   = {Yoshida, Eiichi and Kokaji, Shigeru and Murata, Satoshi and Tomita, Kohji and Kurokawa, Haruhisa},
+  title    = {Miniaturized Self-reconfigurable Modular Machine using Shape Memory Alloy},
+  abstract = {Presents a miniaturized self-reconfigurable modular robotics system using shape memory alloy (SMA). The system is designed so that various shapes can be actively formed by a group of identical mechanical units. The unit realizes rotational motion by using an actuator mechanism composed of two SMA torsion coil springs which generate sufficient motion range and torque for reconfiguration. The fundamental functions of the system are tested by experiments. Applicability of the developed unit model to a 3-D self-reconfigurable system is also discussed},
+  crossref = {conf:iros:1999},
+  doi      = {10.1109/IROS.1999.811704},
+  lab      = {JRL},
+  url      = {https://www.researchgate.net/publication/3828280_Miniaturized_self-reconfigurable_system_using_shape_memory_alloy},
+}
+
+@InProceedings{kajita:icra:2001a,
+  author   = {Kajita, Shuuji and Matsumoto, Osamu and Saigo, Muneharu},
+  title    = {Real-time 3D walking patttern generation for a biped robot with telescopic legs},
+  abstract = {Meltran V, a new biped robot with telescopic legs, is introduced. For 3D walking control of the robot we analyze the dynamics of a three-dimensional inverted pendulum in which motion is constrained to move along an arbitrarily defined plane. From this analysis we obtain simple linear dynamics, the three-dimensional linear inverted pendulum mode (3D-LIPM). Using a real-time control method based on 3D-LIPM, the Meltran V robot successfully demonstrated 3D dynamic walking without the use of any prepared trajectories.},
+  crossref = {conf:icra:2001},
+  doi      = {10.1109/ROBOT.2001.932965},
+  keywords = {Legged locomotion, Leg, Orbital robotics, Knee, Motion control, Humanoid robots, Hip, Servomotors, Robot sensing systems, Mechanical engineering},
+  url      = {http://users.dimi.uniud.it/~antonio.dangelo/Robotica/dissertations/helper/K0529.pdf},
+}
+
+@InProceedings{kajita:icra:2001b,
+  author   = {Kajita, Shuuji and Yokoi, Kazuhito and Saigo, Muneharu and Tanie, Kazuo},
+  title    = {Balancing a Humanoid Robot Using Backdrive Concerned Torque Control and Direct Angular Momentum Feedback},
+  abstract = {A balance control method for a humanoid robot is presented. It consists of a contact torque controller which is designed to have a good backdrivability and a feedback control of the total angular momentum and the center of gravity of a robot. A simulation result of a balance control using a 26 DOF humanoid robot model is shown.},
+  crossref = {conf:icra:2001},
+  doi      = {10.1109/ROBOT.2001.933139},
+  keywords = {Humanoid robots, Torque control, Feeds, Robot sensing systems, Force sensors, Foot, Legged locomotion, Leg, Springs, Feedback},
+  url      = {https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.474.7812&rep=rep1&type=pdf},
+}
+
+@InProceedings{demagistris:icra:2016,
+  author   = {De Magistris, Giovanni and Pajon, Adrien and Miossec, Sylvain and Kheddar, Abderrahmane},
+  title    = {Humanoid walking with compliant soles using a deformation estimator},
+  abstract = {We study the effect of soft (i.e. compliant) soles in humanoid walking. Adding compliance at the foot sole is important for shock absorption during touchdown and to better cast the ground roughness. But, subsequent deformation needs to be considered in the attitude stabilization. We propose a sole deformation estimator used in the controller design, to ensure that the desired ZMP for stability requirement is fulfilled. We performed two comparison experiments on the HRP-4 humanoid robot with/without the estimator. Experiments showed how the estimator enhances the ZMP stabilization during walking and prevents the robot from falling down},
+  crossref = {conf:icra:2016},
+  doi      = {10.1109/ICRA.2016.7487319},
+  keywords = {Humanoid, Compliant Sole, Deformation estimation},
+  lab      = {JRL},
+  url      = {https://hal.archives-ouvertes.fr/hal-01278856/document},
+}
+
+@InProceedings{ayusawa:rsj:2016,
+  author   = {Ayusawa, Ko and Yoshida, Eiichi},
+  title    = {人・ヒューマノイド間の双方向動作リターゲッティング},
+  address  = {山形大学 小白川キャンパス （山形県山形市},
+  month    = sep #{~07},
+  abstract = {人の計測動作をヒューマノイドロボットにより動作再現する手法を開発した．人体の幾何パラメータの同定技術に基づいて，両者の体格のミスマッチを解決しつつ模擬動作を生成できる．一方，ロボットで再現可能な動作に変換する上で，ロボットの物理的制約による動作修正を余儀なくされる．本手法はロボットの再現動作を人の動作へ逆変換して，動作修正がどのように起きたかを定量的に確認できる．提案手法は人を模擬したヒューマノイドに基づく製品評価において有用である．},
+  crossref = {conf:rsj:2016},
+  keywords = {ヒューマノイド、人運動解析、パラメータ同定、運動計画、最適化、動作リターゲッティング},
+  lab      = {JRL},
+}
+
+@InProceedings{imamura:rsj:2016,
+  author   = {Imamura, Yumeko and Ayusawa, Ko and Endo, Yui and Yoshida, Eiichi},
+  title    = {人体シミュレーションを用いたロボット介護機器の設計支援},
+  abstract = {ロボット介護機器は介護者や被介護者との物理的な接触により直接的に人の動作を支援するため，使用者への影響を中心とした機器の設計・開発を行う必要がある．本研究では人との接触を伴うロボット介護機器のデジタルヒューマンモデルを用いた力学的解析による設計支援手法の確立を目指す．本報では剛体リンクモデルを用いた姿勢・接触力推定による身体負担解析と，移乗支援機器の立ち上がり動作を対象とした軌道設計手法について述べる．},
+  crossref = {conf:rsj:2016},
+  keywords = {ロボット介護機器，人体シミュレーション},
+  lab      = {JRL},
+}
+
+@InProceedings{ko:icra:2017,
+  author   = {Ko, Tianyi and Kaminaga, Hiroshi and Nakamura, Yoshihiko},
+  title    = {Underactuated four-fingered hand with five electro hydrostatic actuators in cluster},
+  month    = may #{~29--} # jun #{~03},
+  pages    = {620--625},
+  abstract = {For heavy duty tasks which are needed in field or rough terrain, we developed a hydrostatically actuated anthropomorphic hand. The hand is specifically designed for the humanoid robot HYDRA, whose 40 joints are driven by back-drivable electro-hydrostatic actuators (EHA). Each designed hand has four fingers with a total of five DOF. Each finger has three joints underactuated by one tendon. Opposition/reposition of the thumb joint is also driven by one tendon. The five tendons are pulled by a miniature linear cluster EHA mounted in the forearm. The cluster EHA consists of a light weight tie-rod cylinder cluster with five pistons, and five low friction trochoid pumps with a crescent separator. Its 300 N nominal tension generates 1.5 Nm joint torque on each of the finger joints. Design of the cylinder and pump, with results of evaluation experiments is shown in this paper. Forearm structure with a mechanism to measure the tendon tension, low friction tendon routing in the forearm, low friction wire guiding link for the wrist, and parallel link wrist driving mechanism with two EHAs are also described.},
+  crossref = {conf:icra:2017},
+  doi      = {10.1109/ICRA.2017.7989077},
+}
+
+@InProceedings{samy:icra:2017,
+  author   = {Samy, Vincent and Bouyarmane, Karim and Kheddar, Abderrahmane},
+  title    = {QP-based Adaptive-Gains Compliance Control in Humanoid Falls},
+  pages    = {4762--4767},
+  abstract = {We address the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a postimpact stage. In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment and to adopt a posture to reach them while avoiding impact-singularities and preparing for the postimpact. The surrounding environment can be unstructured and may contain cluttered obstacles. The post-impact stage uses a quadratic program controller that adapts on-line the joint proportional-derivative (PD) gains to make the robot compliant –to absorb impact and post-impact dynamics, which lowers possible damage risks. This is done by a new approach incorporating the stiffness and damping gains directly as decision variables in the QP along with the usually-considered variables of joint accelerations and contact forces. Constraints of the QP prevent the motors from reaching their torque limits during the fall. Several experiments on the humanoid robot HRP-4 in a full-dynamics simulator are presented and discussed.},
+  crossref = {conf:icra:2017},
+  doi      = {10.1109/ICRA.2017.7989553},
+  keywords = {Collision avoidance, Compliance control, Damping, Elasticity, Humanoid Robots, Impact (mechanical), Mechanical Contact, PD control, Quadratic progamming, Robot Dynamics, Torque},
+  lab      = {JRL},
+  url      = {https://hal.archives-ouvertes.fr/hal-01365108v2/document},
+}
+
+@InProceedings{kumagai:iros:2018,
+  author   = {Kumagai, Iori and Morisawa, Mitsuharu and Nakaoka, Shin'ichiro and Sakaguchi, Takeshi and Kaminaga, Hiroshi and Kaneko, Kenji and Kanehiro, Fumio},
+  title    = {Perception Based Locomotion System For a Humanoid Robot with Adaptive Footstep Compensation under Task Constraints},
+  address  = {Madrid, Spain},
+  abstract = {In order to accurately reach a target position while executing a task which imposes occlusion or constraints of the posture, a humanoid robot requires an adaptive locomotion system, which can comprehensively integrate localization, environmental mapping, global locomotion planning and local error correction. In this paper, we propose a method of constructing a perception based locomotion system for a humanoid robot. The major contribution of this paper is solving a problem of the locomotion error caused by the task constraints, by locally compensating footsteps and assessing the need for global footstep re-planning online based on environmental measurements. The proposed system provides an accurate and dense ground point cloud, called HeightField, using plane estimation and space interpolation, and obstacle point cloud for frequent collision avoidance by accumulating laser scans. This environmental perception enables a humanoid robot to plan footsteps globally even in the situation where the sight of the robot is limited and compensate footsteps while estimating landing state during locomotion online with the localization result. We evaluated the practicality of the proposed system by applying it to our humanoid robot carrying a heavy object in a construction site and confirmed that the proposed system contributed to improved locomotion abilities of a humanoid robot engaging in heavy-duty or dangerous tasks.},
+  crossref = {conf:iros:2018},
+  doi      = {10.1109/IROS.2018.8593553},
+  keywords = {Humanoid robots, Task analysis, Planning, Foot, Three-dimensional displays, Estimation},
+  url      = {https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8593553},
+}
+
+@InProceedings{kawamura:robomech:2020,
+  author   = {Kawamura, Yoichiro and Murooka, Masaki and Hiraoka, Naoki and Ito, Hideaki and Okada, Kei and Inaba, Masayuki},
+  title    = {等身大ヒューマノイドによる強化学習と能動的教示要請を組み合わせたのこぎりとかんな技能の獲得},
+  abstract = {The purpose of this study is to make life-sized humanoid robots acquire tool manipulation skills that require complicated force adjustment. The difficulty in acquisition of tool manipulation skills comes from the hardship in physical modeling. Recent research has revealed that deep reinforcement learning (DRL), a model-free approach, performs superior in such tasks. However, DRL in general has a drawback in sample efficiency, and this becomes critical in robot learning especially in life-sized humanoid robots. In this study, we propose an integrated system incorporating DRL method and active learning. Our method also leverages a variety of previous studies on life-sized humanoid robots to overcome the sample efficiency issue. We demonstrated the effectiveness of our proposed system through a hacksaw skill acquisition and a Japanese planer (Kanna) skill acquisition by a life-sized humanoid robot.},
+  crossref = {conf:robomech:2020},
+  doi      = {https://doi.org/10.1299/jsmermd.2020.2A2-G12},
+  keywords = {Humanoid, Reinforcement Learning, Learning from Demonstration},
+  lab      = {JRL},
+}
+
+@InProceedings{qin:robomech:2020,
+  author   = {Qin, Yili and Escande, Adrien and Tanguy, Arnaud and Yoshida, Eiichi},
+  title    = {Take a Long Deformable Belt out of a Bobbin by Humanoid Robot},
+  abstract = {In this paper, we present our research on using the HRP-2Kai humanoid robot to take a long, thin and flexible belt out of a bobbin. By proposing a novel non-prehensile manipulation strategy ”scraping” and using a real-time 3D shape estimateor for 2D flexilbe thin object. We show experimentally humanoid robots can complete this complex task in industrial production.},
+  crossref = {conf:robomech:2020},
+  doi      = {https://doi.org/10.1299/jsmermd.2020.1P1-B04},
+  keywords = {Humanoid Robot, Deformable Objects Manipulation, Visual Detection, Force Control},
+  lab      = {JRL},
+  url      = {https://www.researchgate.net/publication/347159082_Take_a_Long_Deformable_Belt_out_of_a_Bobbin_by_Humanoid_Robot},
+}
+
+@InProceedings{kajita:rsj:2020,
+  author   = {Kajita, Shuuji and Onishi, Yuki and Sakaguchi, Takeshi and Kaneko, Kenji},
+  title    = {空間量子化ダイナミクスのための自由曲線上の膝伸展2足歩行軌道計画},
+  abstract = {自由曲線上を歩行するための2足歩行の幾何学的な軌道計画について論じる。大西らによる経路座標系に沿った空間量子化ダイナミクス [Robomech2020] に適した経路曲線の設定法、および、支持脚を常に伸展させた場合の遊脚軌道生成方法について述べる。},
+  crossref = {conf:rsj:2020},
+  keywords = {biped robot, humanoid robot, ZMP, knee-stretched walk, Spatially Quantized Dynamics},
+  lab      = {JRL},
+}
+
+@Workshop{imamura:work:2016,
+  abstract = {Robotic care devices are the assistive device that supports human movement directly by physical interaction. In order to improve such devices, the quantitative evaluation about their effect on human will be indispensable. We aim to develop the method supporting the human-centered design and promote industry by making industrial standards about effect on humans. As a first step, this paper presents our work about the design support for robotic transfer aid by using digital human models and its dynamics analysis.},
+  author   = {Imamura, Yumeko and Ayusawa, Ko and Endo, Yui and Yoshida, Eiichi},
+  crossref = {conf:humanoids:2016},
+  keywords = {Robotic Care Device, Human Dynamics Simulator, Human-Centered Design},
+  lab      = {JRL},
+  title    = {Analysis of Robotic Care Devices using Human Dynamics Simulator},
+}
+
+@Workshop{escande:work:2019,
+  abstract = {This presents some aspects of continuously switching priority between tasks in a priority-based linearized control approach, by leveraging the relation between strict priority and weight-based soft priority. We first make some high level comments on the meaning of switching in the context of conflict between tasks, then show the relation between, strict priority, soft priority and matrix decomposition.},
+  author   = {Escande, Adrien},
+  crossref = {conf:icra:2019},
+  keywords = {Robot control, stack of tasks, priority, continuous switch},
+  lab      = {JRL},
+  month    = may #{~24},
+  title    = {Mathematical aspects of switching priorities in stack of tasks},
+  url      = {https://www.workshop-cmstr.de/Adrien-Escande-ICRA2019-workshop-present.pdf},
+}
+
+@Proceedings{conf:humanoids:2016,
+  title     = humanoids,
+  year      = {2016},
+  address   = {Cancun, Mexico},
+  month     = nov #{~15--17},
+  booktitle = humanoids,
+}
+
+@Proceedings{conf:icra:2001,
+  title     = icra,
+  year      = {2001},
+  address   = {Seoul, South Korea},
+  month     = may #{~21--26},
+  booktitle = icra,
+}
+
+@Proceedings{conf:icra:2015,
+  title     = icra,
+  booktitle = icra,
+  year      = {2015},
+  address   = {Seattle (WA), USA},
+  month     = may #{~26--30},
+}
+
+@Proceedings{conf:icra:2016,
+  title     = icra,
+  booktitle = icra,
+  year      = {2016},
+  address   = {Stockholm, Sweden},
+  month     = may #{~16--21},
+}
+
+@Proceedings{conf:icra:2017,
+  title     = icra,
+  booktitle = icra,
+  year      = {2017},
+  address   = {Singapore},
+  month     = may #{~29--}# jun #{~2},
+}
+
+@Proceedings{conf:icra:2018,
+  title     = icra,
+  booktitle = icra,
+  year      = {2018},
+  address   = {Brisbane, Australia},
+  month     = may #{~21--26},
+}
+
+@Proceedings{conf:icra:2019,
+  title     = icra,
+  booktitle = icra,
+  year      = {2019},
+  address   = {Montreal, Canada},
+  month     = may #{~20--24},
+}
+
+@Proceedings{conf:iros:1999,
+  title     = iros,
+  year      = {1999},
+  address   = {Kyongju, South Korea},
+  month     = oct #{~17--21},
+  booktitle = iros,
+}
+
+@Proceedings{conf:iros:2018,
+  title     = iros,
+  year      = {2018},
+  address   = {Madrid,Spain},
+  month     = oct #{~1--5},
+  booktitle = iros,
+}
+
+@Proceedings{conf:rsj:2016,
+  title     = rsj,
+  year      = {2016},
+  address   = {山形大学　小白川キャンパス　（山形県山形市）},
+  month     = sep #{~07--09},
+  booktitle = rsj,
+}
+
+@Proceedings{conf:rsj:2020,
+  title     = rsj,
+  year      = {2020},
+  address   = {Online, Japan},
+  month     = oct #{~9--11},
+  booktitle = rsj,
+}
+
+@Proceedings{conf:robomech:2020,
+  title     = robomech,
+  year      = {2020},
+  address   = {Kanazawa, Japan},
+  month     = may #{~27--30},
+  booktitle = robomech,
+}
+
+@Proceedings{jrnl:ral,
+  title     = {IEEE Robotics and Automation Letters},
+  journal   = {IEEE Robotics and Automation Letters},
+  address   = {445 Hoes Lane, Piscataway, NJ 08855-4141, USA},
+  publisher = {IEEE-INST Electrical Electronics Engineers Inc},
+}
+
+@Proceedings{jrnl:ar,
+  title     = {Advanced Robotics},
+  address   = {2-4 PARK SQUARE, MILTON PARK, ABINGDON OR14 4RN, OXON, ENGLAND},
+  publisher = {TAYLOR \& FRANCIS LTD},
+  journal   = {Advanced Robotics},
+}
+
+@Proceedings{jrnl:ijrr,
+  title     = {The International Journal of Robotics Research},
+  journal   = {The International Journal of Robotics Research},
+  address   = {1 Olivers Yard, 55 City Road, London EC1Y 1SP, England},
+  publisher = {Sage Publications Ltd},
+}
+
+@Proceedings{jrnl:jst,
+  title   = {日本ロボット学会誌},
+  journal = {日本ロボット学会誌},
+}
+
+@Proceedings{jrnl:eneuro,
+  title     = {eNeuro},
+  publisher = {Society for Neuroscience},
+  journal   = {eNeuro},
+}
