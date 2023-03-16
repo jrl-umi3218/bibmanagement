@@ -6,9 +6,9 @@ from bibmanagement import Biblio
 from bibmanagement.utils import BibFilter
 from bibmanagement.fields import Journal
 from bibmanagement.fields import Booktitle
+from bibmanagement import log
 import yaml
 import os
-
 
 def generateYamlEntry(e):
     """Given an object of type Entry, generate the corresponding yaml entry for the publication list"""
@@ -134,6 +134,9 @@ def generateYamlJRL(jrlPubliPath, jrlWebsitePath, generateEntryBib=False):
     alternativeNameFilePath = jrlPubliPath + 'alternativeNames.yml'
     outDirPath = jrlPubliPath + 'tmp/'
     outPath = outDirPath + 'publications.yml'
+    ignoreLogFilePath = jrlPubliPath + 'ignoreLog.yml'
+    
+    log.addLogConditions(ignoreLogFilePath)
     generateYaml(bibfilePath, memberFilePath, journalListPath, conferenceListPath, additionalFilePath, alternativeNameFilePath, outPath)
     if generateEntryBib:
         generateBib(bibfilePath, outDirPath)
