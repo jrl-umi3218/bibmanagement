@@ -132,4 +132,4 @@ def checkKeys(bib):
             else:
                 logger.warning(e, 'skipping_key_check')
         except:
-            log.error(e, 'error', e.raw())
+            logger.error(e, 'error', e.raw())
