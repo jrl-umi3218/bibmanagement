@@ -2,7 +2,7 @@
 
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
-from bibtexparser.customization import *
+from bibmanagement.utils import LatexConversions
 import re
 
 def getEncoding(filePath):
@@ -29,7 +29,7 @@ def openBib(filePath):
     encoding = getEncoding(filePath)
     with open(filePath, encoding=encoding) as bibFile:
         parser = BibTexParser(common_strings=True, ignore_nonstandard_types=False)
-        parser.customization = convert_to_unicode
+        parser.customization = LatexConversions.convert_to_unicode_preserve_formula(['title', 'abstract'])
         return parser.parse_file(bibFile)
 
 

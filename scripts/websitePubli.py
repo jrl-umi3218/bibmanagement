@@ -4,6 +4,7 @@ from bibmanagement.bibParser import *
 from bibmanagement.Entry import *
 from bibmanagement import Biblio
 from bibmanagement.utils import BibFilter
+from bibmanagement.utils import LatexConversions
 from bibmanagement.fields import Journal
 from bibmanagement.fields import Booktitle
 from bibmanagement import log
@@ -15,7 +16,7 @@ def generateYamlEntry(e):
     try:
         d = {"id": str(e.format("%ID%")),
              "year": e.year._val,
-             "title": str(e.format("%title%")),
+             "title": LatexConversions.remove_formula(str(e.format("%title%"))),
              "booktitle": str(e.format("{%booktitle%|%journal%}")),
              "authors": [{"family":a.last, "given":a.first} for a in e.author._authors]}
         
@@ -31,7 +32,8 @@ def generateYamlEntry(e):
             d['lab'] = str.lower(str(e.lab))
             
         return d
-    except:
+    except Exception as ex:
+        print(ex)
         print(e.raw())
 
 def generateInitialYaml(bibfilePath):
@@ -58,7 +60,12 @@ def replaceNameWithId(yamlData, idFilePath, alternativeNameFilePath):
             members += yaml.load(file, Loader=yaml.FullLoader)
     
     for e in yamlData:
-        e['authors'] = [replaceAuthorWithId(a, members) for a in e['authors']]
+        try:
+            e['authors'] = [replaceAuthorWithId(a, members) for a in e['authors']]
+        except Exception as ex:
+            print("Replace error with")
+            print(e)
+            print(ex)
         
     return yamlData
     
@@ -113,7 +120,7 @@ def generateBib(bibfilePath, outDirPath):
         bibPath = outDirPath + e.id.replace(':','_')+'.bib'
         if isinstance(e, select):
             try:
-                with open(bibPath, 'w') as bib:
+                with open(bibPath, 'w', encoding="utf-8") as bib:
                     bib.write(e.toString(['lab','crossref']))
             except Exception as ex:
                 print("Error with")
