@@ -31,6 +31,9 @@ def generateYamlEntry(e):
         if 'lab' in e.keys() and e.lab:
             d['lab'] = str.lower(str(e.lab))
             
+        if 'month' in e.keys() and e.month:
+            d['month'] = str.lower(str(e.month))
+
         return d
     except Exception as ex:
         print(ex)
