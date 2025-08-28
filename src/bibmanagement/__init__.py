@@ -30,13 +30,13 @@ class PackageLogger(logging.Logger):
 # sub-logger.
 # We do this because filters at the logger level are not inherited. 
 logging_class = logging.getLoggerClass()                # store the current logger factory for later
-logging._acquireLock()                                  # use the global logging lock for thread safety
+logging._prepareFork()                                  # use the global logging lock for thread safety
 try:
     logging.setLoggerClass(PackageLogger)               # temporarily change the logger factory
     packageLogger = logging.getLogger('bibmanagement')
     logging.setLoggerClass(logging_class)               # be nice, revert the logger factory change
 finally:
-    logging._releaseLock()
+    logging._afterFork()
 
 f = SelectionFilter.SelectionFilter()
 f.name = 'main'
