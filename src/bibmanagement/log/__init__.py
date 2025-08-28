@@ -86,7 +86,7 @@ def getBibLogger(name):
     parent = logging.getLogger('bibmanagement')
     
     logging_class = logging.getLoggerClass()  # store the current logger factory for later
-    logging._acquireLock()                    # use the global logging lock for thread safety
+    logging._prepareFork()                    # use the global logging lock for thread safety
     try:
         logging.setLoggerClass(Logger)        # temporarily change the logger factory
         logger = logging.getLogger(name)
@@ -97,7 +97,7 @@ def getBibLogger(name):
         return logger
 
     finally:
-        logging._releaseLock()
+        logging._afterFork()
 
 def addLogConditions(yamlFile):
     '''Add filters on package log based on te content of yamlFile'''
